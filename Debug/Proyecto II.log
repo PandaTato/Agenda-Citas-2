@@ -1,0 +1,7 @@
+﻿  Agenda.cpp
+c:\users\rodri\onedrive\universidad\una\programación ii\karol leiton\proyecto\proyecto ii github\agenda-citas\proyecto ii\lista.h(125): error C2760: syntax error: unexpected token '<', expected 'expression'
+  Factura.cpp
+c:\users\rodri\onedrive\universidad\una\programación ii\karol leiton\proyecto\proyecto ii github\agenda-citas\proyecto ii\lista.h(125): error C2760: syntax error: unexpected token '<', expected 'expression'
+  Fecha.cpp
+c:\users\rodri\onedrive\universidad\una\programación ii\karol leiton\proyecto\proyecto ii github\agenda-citas\proyecto ii\fecha.cpp(340): error C2661: 'Fecha::Fecha': no overloaded function takes 3 arguments
+  Generating Code...
