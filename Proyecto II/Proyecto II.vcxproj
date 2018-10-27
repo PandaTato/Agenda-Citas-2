@@ -117,11 +117,11 @@
   <ItemGroup>
     <ClInclude Include="Agenda.h" />
     <ClInclude Include="Cita.h" />
-    <ClInclude Include="Controladora.h" />
     <ClInclude Include="Doctor.h" />
     <ClInclude Include="Factura.h" />
     <ClInclude Include="Fecha.h" />
     <ClInclude Include="Hora.h" />
+    <ClInclude Include="Interfaz.h" />
     <ClInclude Include="Lista.h" />
     <ClInclude Include="Nodo.h" />
     <ClInclude Include="Paciente.h" />
@@ -135,6 +135,7 @@
     <ClCompile Include="Factura.cpp" />
     <ClCompile Include="Fecha.cpp" />
     <ClCompile Include="Hora.cpp" />
+    <ClCompile Include="Interfaz.cpp" />
     <ClCompile Include="MAIN.cpp" />
     <ClCompile Include="Paciente.cpp" />
     <ClCompile Include="Persona.cpp" />
