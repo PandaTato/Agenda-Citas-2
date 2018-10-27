@@ -67,6 +67,8 @@ public:
 	static void salir();
 	static void defaul();
 
+	//hola
+
 };
 
 #endif // !INTERFAZ_H
