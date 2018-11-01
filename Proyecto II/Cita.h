@@ -36,6 +36,7 @@ public:
 	void setHora(Hora*);
 
 	string toString();
+	friend ostream& operator<<(ostream& out, Cita* e);
 
 	void guardar(ofstream&);
 	static Cita* leer(ifstream&);

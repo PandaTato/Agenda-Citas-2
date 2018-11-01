@@ -72,6 +72,17 @@ string Cita::toString()
 	return r.str();
 }
 
+ostream & operator<<(ostream & out, Cita* e)
+{
+	out
+		<< "Id: " << e->id << "\t" << e->fecha->getDia() << "/" << e->fecha->getMes() << "/" << e->fecha->getAnnio()
+		<< "\t" << e->paciente->getNombre() << " " << e->paciente->getApellido()
+		<< "\t" << e->paciente->getID() << endl
+		<< "                                 *--------*                           " << endl;
+
+	return out;
+}
+
 void Cita::guardar(ofstream & salida)
 {
 	salida << id << '\n';

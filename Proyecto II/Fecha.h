@@ -26,21 +26,21 @@ private:
 
 public:
 	Fecha();
-	Fecha(int, int, int);
+	Fecha(int, int, int); //volarselo?
 	Fecha(int, int, int, int);
 	~Fecha();
 
 	int getAnnio();
 	int getMes();
 	int getDia();
-	int getDay();
+	int getwday();
 
 	string getMesPal(int);
 
 	void setAnnio(int);
 	void setMes(int);
 	void setDia(int);
-	void setDay(int);
+	void setwday(int);
 
 	string toString();
 

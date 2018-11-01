@@ -5,6 +5,7 @@ Fecha::Fecha()
 	annio = nowLocal.tm_year + 1900;
 	mes = nowLocal.tm_mon + 1;
 	dia = nowLocal.tm_mday;
+	day = nowLocal.tm_wday + 1;
 }
 Fecha::Fecha(int pAnnio, int pMes, int pDia)
 {
@@ -25,7 +26,7 @@ Fecha::~Fecha() {}
 int Fecha::getAnnio() { return annio; }
 int Fecha::getMes() { return mes; }
 int Fecha::getDia() { return dia; }
-int Fecha::getDay() { return day; }
+int Fecha::getwday() { return day; }
 
 string Fecha::getMesPal(int pMes)
 {
@@ -60,7 +61,7 @@ string Fecha::getMesPal(int pMes)
 void Fecha::setAnnio(int a) { annio = a; }
 void Fecha::setMes(int pMes) { mes = pMes; }
 void Fecha::setDia(int d) { dia = d; }
-void Fecha::setDay(int pDay) { day = pDay; }
+void Fecha::setwday(int pDay) { day = pDay; }
 
 string Fecha::toString()
 {
