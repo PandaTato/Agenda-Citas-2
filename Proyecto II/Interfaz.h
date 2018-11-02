@@ -1,7 +1,9 @@
 #ifndef INTERFAZ_H
 #define ITERFAZ_H
 
-class Empresa;
+#include "Empresa.h"
+using namespace std;
+//class Empresa;
 
 class Interfaz
 {
