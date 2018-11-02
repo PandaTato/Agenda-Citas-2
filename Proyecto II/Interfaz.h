@@ -1,6 +1,8 @@
 #ifndef INTERFAZ_H
 #define ITERFAZ_H
 
+#include "Paciente.h"
+
 class Empresa;
 
 class Interfaz
@@ -20,19 +22,20 @@ public:
 
 	static int MMFactura();
 	//Reservas mantenimiento
-	static bool MMFIingresar(Empresa*);
-	static bool MMFImodificar(Empresa*);
-	static bool MMFIeliminar(Empresa*);
-	static bool MMFImostrarid(Empresa*);
-	static bool MMFImostrartodos(Empresa*);
+	static bool MMFingresar(Empresa*);
+	static bool MMFanular(Empresa*);
+	static bool MMFmostrarid(Empresa*);
+	static bool MMFmostrarPersona(Empresa*);
+	static bool MMFmostrartodos(Empresa*);
 
-	static int MMCliente();
+	static int MMPaciente();
 	//cliente mantenimiento
-	static bool MMCingresar(Empresa*);
-	static bool MMCmodificar(Empresa*);
-	static bool MMCeliminar(Empresa*);
-	static bool MMCmostrarid(Empresa*);
-	static bool MMCmostrartodos(Empresa*);
+	static bool MMPingresar(Empresa*);
+	static bool MMPmodificar(Empresa*);
+	static bool MMPeliminar(Empresa*);
+	static bool MMPmostrarid(Empresa*);  //
+	static bool MMPmostrarPersona(Empresa*);
+	static bool MMPmostrartodos(Empresa*);  //
 
 	static int MMDoctor();
 	//Pilotos mantenimiento
@@ -43,32 +46,21 @@ public:
 	static bool MMDmostrartodos(Empresa*);
 
 	static int MMCita();
-	//Aviones mantenimiento
+	//cita mantenimiento
 	static bool MMCIingresar(Empresa*);
 	static bool MMCImodificar(Empresa*);
 	static bool MMCIeliminar(Empresa*);
 	static bool MMCImostrarid(Empresa*);
+	static bool MMFCImostrarPersona(Empresa*);
 	static bool MMCImostrartodos(Empresa*);
 
-	static int MMViaje();
-	//Aviones mantenimiento
-	static bool MMVingresar(Empresa*);
-	static bool MMVmodificar(Empresa*);
-	static bool MMVeliminar(Empresa*);
-	static bool MMVmostrarid(Empresa*);
-	static bool MMVmostrartodos(Empresa*);
-
-	static int MMEmpresa();
-	//empresa mantenimiento
-	static bool MMEmodificar(Empresa*);
-	static bool MMEmostrar(Empresa*);
-
+	static int MMAgenda();
+	//agenda mantenimiento
+	static bool MMFAmostrarFecha(Empresa*);
+	static bool MMFAmostrarHoy(Empresa*);
 
 	static void salir();
 	static void defaul();
-
-	//hola
-
 };
 
 #endif // !INTERFAZ_H
