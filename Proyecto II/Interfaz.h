@@ -2,8 +2,8 @@
 #define ITERFAZ_H
 
 #include "Paciente.h"
-
-class Empresa;
+#include "Empresa.h"
+using namespace std;
 
 class Interfaz
 {

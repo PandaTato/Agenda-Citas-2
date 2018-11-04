@@ -2,7 +2,13 @@
 
 Empresa * Interfaz::inicio()
 {
-	return nullptr;
+	system("cls");
+
+	string nombre = "Leiton";
+	cout << "#----------------------------------------------#" << endl;
+	cout << "#     ¡Bienvenidos a la clinica " << nombre << " !       #" << endl;
+	cout << "#----------------------------------------------#" << endl;
+	return new Empresa(nombre);
 }
 
 int Interfaz::menu()
@@ -22,72 +28,172 @@ bool Interfaz::MFactura(Empresa *)
 
 int Interfaz::mantenimiento()
 {
-	return 0;
+	int opcionMm;
+
+	system("cls");
+
+	cout << "#----------------------------------------------#" << endl;
+	cout << "#                  Mantenimiento               #" << endl;
+	cout << "#----------------------------------------------#" << endl;
+	cout << "# 1 | Factura                                  #" << endl;
+	cout << "#----------------------------------------------#" << endl;
+	cout << "# 2 | Cliente                                  #" << endl;
+	cout << "#----------------------------------------------#" << endl;
+	cout << "# 3 | Doctor                                   #" << endl;
+	cout << "#----------------------------------------------#" << endl;
+	cout << "# 4 | Cita                                     #" << endl;
+	cout << "#----------------------------------------------#" << endl;
+	cout << "# 5 | Agenda                                   #" << endl;
+	cout << "#----------------------------------------------#" << endl;
+	cout << "# 6 | Volver                                   #" << endl;
+	cout << "#----------------------------------------------#" << endl;
+	cout << "# Digite la opcion que desee: ";  cin >> opcionMm;
+	cout << "#----------------------------------------------#" << endl;
+
+	system("pause");
+	return opcionMm;
 }
 
 int Interfaz::MMFactura()
 {
-	return 0;
+	int opMMP;
+
+	system("cls");
+
+	cout << "#----------------------------------------------#" << endl;
+	cout << "#                  Factura                     #" << endl;
+	cout << "#----------------------------------------------#" << endl;
+	cout << "# 1 | Ingresar                                 #" << endl;
+	cout << "#----------------------------------------------#" << endl;
+	cout << "# 2 | Modificar                                #" << endl;
+	cout << "#----------------------------------------------#" << endl;
+	cout << "# 3 | Eliminar                                 #" << endl;
+	cout << "#----------------------------------------------#" << endl;
+	cout << "# 4 | Mostrar uno en especifico                #" << endl;
+	cout << "#----------------------------------------------#" << endl;
+	cout << "# 5 | Mostrar todos                            #" << endl;
+	cout << "#----------------------------------------------#" << endl;
+	cout << "# 6 | Volver                                   #" << endl;
+	cout << "#----------------------------------------------#" << endl;
+	cout << "# Digite la opcion que desee: " << endl; cin >> opMMP;
+	cout << "#----------------------------------------------#" << endl;
+
+	system("pause");
+
+	return opMMP;
 }
 
-bool Interfaz::MMFIingresar(Empresa *)
+bool Interfaz::MMFingresar(Empresa *)
 {
 	return false;
 }
 
-bool Interfaz::MMFImodificar(Empresa *)
+bool Interfaz::MMFanular(Empresa *)
 {
 	return false;
 }
 
-bool Interfaz::MMFIeliminar(Empresa *)
+bool Interfaz::MMFmostrarid(Empresa *)
 {
 	return false;
 }
 
-bool Interfaz::MMFImostrarid(Empresa *)
+bool Interfaz::MMFmostrarPersona(Empresa *)
 {
 	return false;
 }
 
-bool Interfaz::MMFImostrartodos(Empresa *)
+bool Interfaz::MMFmostrartodos(Empresa *)
 {
 	return false;
 }
 
-int Interfaz::MMCliente()
+int Interfaz::MMPaciente()
 {
-	return 0;
+	int opMMP;
+
+	system("cls");
+
+	cout << "#----------------------------------------------#" << endl;
+	cout << "#                  Paciente                    #" << endl;
+	cout << "#----------------------------------------------#" << endl;
+	cout << "# 1 | Ingresar                                 #" << endl;
+	cout << "#----------------------------------------------#" << endl;
+	cout << "# 2 | Modificar                                #" << endl;
+	cout << "#----------------------------------------------#" << endl;
+	cout << "# 3 | Eliminar                                 #" << endl;
+	cout << "#----------------------------------------------#" << endl;
+	cout << "# 4 | Mostrar uno en especifico                #" << endl;
+	cout << "#----------------------------------------------#" << endl;
+	cout << "# 5 | Mostrar todos                            #" << endl;
+	cout << "#----------------------------------------------#" << endl;
+	cout << "# 6 | Volver                                   #" << endl;
+	cout << "#----------------------------------------------#" << endl;
+	cout << "# Digite la opcion que desee: " << endl; cin >> opMMP;
+	cout << "#----------------------------------------------#" << endl;
+
+	system("pause");
+
+	return opMMP;
 }
 
-bool Interfaz::MMCingresar(Empresa *)
+bool Interfaz::MMPingresar(Empresa *)
 {
 	return false;
 }
 
-bool Interfaz::MMCmodificar(Empresa *)
+bool Interfaz::MMPmodificar(Empresa *)
 {
 	return false;
 }
 
-bool Interfaz::MMCeliminar(Empresa *)
+bool Interfaz::MMPeliminar(Empresa *)
 {
 	return false;
 }
 
-bool Interfaz::MMCmostrarid(Empresa *)
+bool Interfaz::MMPmostrarid(Empresa *)
 {
 	return false;
 }
 
-bool Interfaz::MMCmostrartodos(Empresa *)
+bool Interfaz::MMPmostrarPersona(Empresa *)
+{
+	return false;
+}
+
+bool Interfaz::MMPmostrartodos(Empresa *)
 {
 	return false;
 }
 
 int Interfaz::MMDoctor()
 {
-	return 0;
+	int opMMP;
+
+	system("cls");
+
+	cout << "#----------------------------------------------#" << endl;
+	cout << "#                   Doctor                     #" << endl;
+	cout << "#----------------------------------------------#" << endl;
+	cout << "# 1 | Ingresar                                 #" << endl;
+	cout << "#----------------------------------------------#" << endl;
+	cout << "# 2 | Modificar                                #" << endl;
+	cout << "#----------------------------------------------#" << endl;
+	cout << "# 3 | Eliminar                                 #" << endl;
+	cout << "#----------------------------------------------#" << endl;
+	cout << "# 4 | Mostrar uno en especifico                #" << endl;
+	cout << "#----------------------------------------------#" << endl;
+	cout << "# 5 | Mostrar todos                            #" << endl;
+	cout << "#----------------------------------------------#" << endl;
+	cout << "# 6 | Volver                                   #" << endl;
+	cout << "#----------------------------------------------#" << endl;
+	cout << "# Digite la opcion que desee: " << endl; cin >> opMMP;
+	cout << "#----------------------------------------------#" << endl;
+
+	system("pause");
+
+	return opMMP;
 }
 
 bool Interfaz::MMDingresar(Empresa *)
@@ -117,7 +223,31 @@ bool Interfaz::MMDmostrartodos(Empresa *)
 
 int Interfaz::MMCita()
 {
-	return 0;
+	int opMMP;
+
+	system("cls");
+
+	cout << "#----------------------------------------------#" << endl;
+	cout << "#                    Citas                     #" << endl;
+	cout << "#----------------------------------------------#" << endl;
+	cout << "# 1 | Ingresar                                 #" << endl;
+	cout << "#----------------------------------------------#" << endl;
+	cout << "# 2 | Modificar                                #" << endl;
+	cout << "#----------------------------------------------#" << endl;
+	cout << "# 3 | Eliminar                                 #" << endl;
+	cout << "#----------------------------------------------#" << endl;
+	cout << "# 4 | Mostrar uno en especifico                #" << endl;
+	cout << "#----------------------------------------------#" << endl;
+	cout << "# 5 | Mostrar todos                            #" << endl;
+	cout << "#----------------------------------------------#" << endl;
+	cout << "# 6 | Volver                                   #" << endl;
+	cout << "#----------------------------------------------#" << endl;
+	cout << "# Digite la opcion que desee: " << endl; cin >> opMMP;
+	cout << "#----------------------------------------------#" << endl;
+
+	system("pause");
+
+	return opMMP;
 }
 
 bool Interfaz::MMCIingresar(Empresa *)
@@ -140,55 +270,31 @@ bool Interfaz::MMCImostrarid(Empresa *)
 	return false;
 }
 
+bool Interfaz::MMFCImostrarPersona(Empresa *)
+{
+	return false;
+}
+
 bool Interfaz::MMCImostrartodos(Empresa *)
 {
 	return false;
 }
 
-int Interfaz::MMViaje()
+int Interfaz::MMAgenda()
 {
 	return 0;
 }
 
-bool Interfaz::MMVingresar(Empresa *)
+bool Interfaz::MMFAmostrarFecha(Empresa *)
 {
 	return false;
 }
 
-bool Interfaz::MMVmodificar(Empresa *)
+bool Interfaz::MMFAmostrarHoy(Empresa *)
 {
 	return false;
 }
 
-bool Interfaz::MMVeliminar(Empresa *)
-{
-	return false;
-}
-
-bool Interfaz::MMVmostrarid(Empresa *)
-{
-	return false;
-}
-
-bool Interfaz::MMVmostrartodos(Empresa *)
-{
-	return false;
-}
-
-int Interfaz::MMEmpresa()
-{
-	return 0;
-}
-
-bool Interfaz::MMEmodificar(Empresa *)
-{
-	return false;
-}
-
-bool Interfaz::MMEmostrar(Empresa *)
-{
-	return false;
-}
 
 void Interfaz::salir()
 {
