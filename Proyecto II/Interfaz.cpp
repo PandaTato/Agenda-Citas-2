@@ -30,60 +30,68 @@ int Interfaz::MMFactura()
 	return 0;
 }
 
-bool Interfaz::MMFIingresar(Empresa *)
+bool Interfaz::MMFingresar(Empresa *)
 {
 	return false;
 }
 
-bool Interfaz::MMFImodificar(Empresa *)
+bool Interfaz::MMFanular(Empresa *)
 {
 	return false;
 }
 
-bool Interfaz::MMFIeliminar(Empresa *)
+bool Interfaz::MMFmostrarid(Empresa *)
 {
 	return false;
 }
 
-bool Interfaz::MMFImostrarid(Empresa *)
+bool Interfaz::MMFmostrarPersona(Empresa *)
 {
 	return false;
 }
 
-bool Interfaz::MMFImostrartodos(Empresa *)
+bool Interfaz::MMFmostrartodos(Empresa *)
 {
 	return false;
 }
 
-int Interfaz::MMCliente()
+int Interfaz::MMPaciente()
 {
 	return 0;
 }
 
-bool Interfaz::MMCingresar(Empresa *)
+bool Interfaz::MMPingresar(Empresa *)
 {
 	return false;
 }
 
-bool Interfaz::MMCmodificar(Empresa *)
+bool Interfaz::MMPmodificar(Empresa *)
 {
 	return false;
 }
 
-bool Interfaz::MMCeliminar(Empresa *)
+bool Interfaz::MMPeliminar(Empresa *)
 {
 	return false;
 }
 
-bool Interfaz::MMCmostrarid(Empresa *)
+bool Interfaz::MMPmostrarid(Empresa *)
 {
 	return false;
 }
 
-bool Interfaz::MMCmostrartodos(Empresa *)
+bool Interfaz::MMPmostrarPersona(Empresa *)
 {
 	return false;
 }
+
+bool Interfaz::MMPmostrartodos(Empresa *)
+{
+	return false;
+}
+
+
+
 
 int Interfaz::MMDoctor()
 {
@@ -140,55 +148,32 @@ bool Interfaz::MMCImostrarid(Empresa *)
 	return false;
 }
 
+bool Interfaz::MMFCImostrarPersona(Empresa *)
+{
+	return false;
+}
+
 bool Interfaz::MMCImostrartodos(Empresa *)
 {
 	return false;
 }
 
-int Interfaz::MMViaje()
+int Interfaz::MMAgenda()
 {
 	return 0;
 }
 
-bool Interfaz::MMVingresar(Empresa *)
+bool Interfaz::MMFAmostrarFecha(Empresa *)
 {
 	return false;
 }
 
-bool Interfaz::MMVmodificar(Empresa *)
+bool Interfaz::MMFAmostrarHoy(Empresa *)
 {
 	return false;
 }
 
-bool Interfaz::MMVeliminar(Empresa *)
-{
-	return false;
-}
 
-bool Interfaz::MMVmostrarid(Empresa *)
-{
-	return false;
-}
-
-bool Interfaz::MMVmostrartodos(Empresa *)
-{
-	return false;
-}
-
-int Interfaz::MMEmpresa()
-{
-	return 0;
-}
-
-bool Interfaz::MMEmodificar(Empresa *)
-{
-	return false;
-}
-
-bool Interfaz::MMEmostrar(Empresa *)
-{
-	return false;
-}
 
 void Interfaz::salir()
 {
