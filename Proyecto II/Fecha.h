@@ -43,7 +43,7 @@ public:
 	void setwday(int);
 
 	string toString();
-
+	int getWeekDay(int, int, int);
 	static bool validarFecha(int, int, int);
 	bool esMenor(Fecha*);
 	static Fecha* validarFechaC(int, int, int);
