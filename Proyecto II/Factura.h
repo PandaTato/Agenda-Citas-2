@@ -7,17 +7,18 @@ class Factura
 {
 private:
 	string id;
+	string estado;
 
 	float subTotal;
 	float descuento;
 	float impuestoVenta;
 	float total;
 	
-	Agenda* agenda;
+	Cita* agenda;
 public:
 	Factura();
-	Factura(float, float, float, float, Agenda*);
-	Factura(string, float, float, float, float, Agenda*);
+	Factura(float, float, float, float, Cita*);
+	Factura(string, string, float, float, float, float, Cita*);
 
 	~Factura();
 
@@ -26,14 +27,17 @@ public:
 	float getDescuento();
 	float getImpuestoVenta();
 	float getTotal();
-	Agenda* getAgenda();
+	Cita* getAgenda();
+	string getEstado();
 
 	void setId(string);
 	void setSubTotal(float);
 	void setDescuento(float);
 	void setImpuestoVenta(float);
 	void setTotal(float);
-	void setAgenda(Agenda*);
+	void setAgenda(Cita*);
+	void setEstado(string);
+
 	string toString();
 
 	void guardar(ofstream&);

@@ -17,12 +17,11 @@ protected:
 	string nombre;
 	string apellido;
 	string telefono;
-	string correo;
 	Fecha* nacimiento;
 
 public:
 	Persona();
-	Persona(string, string, string, string,string, Fecha*);
+	Persona(string, string, string,string, Fecha*);
 	~Persona();
 
 	//gets
@@ -30,7 +29,6 @@ public:
 	virtual string getNombre();
 	virtual string getApellido();
 	virtual string getTelefono();
-	virtual string getCorreo();
 	virtual Fecha* getNacimiento();
 
 	//sets
@@ -38,7 +36,6 @@ public:
 	virtual void setNombre(string);
 	virtual void setApellido(string);
 	virtual void setTelefono(string);
-	virtual void getCorreo(string);
 	virtual void getNacimiento(Fecha*);
 
 	//to string

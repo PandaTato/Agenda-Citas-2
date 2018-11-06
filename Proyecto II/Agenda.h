@@ -21,7 +21,7 @@ public:
 
 	string toString();
 
-	string obtenerAgenda(Doctor*);
+	string obtenerAgenda(Doctor*,Fecha*);
 
 	void guardar(ofstream&);
 	static Agenda* leer(ifstream&);
