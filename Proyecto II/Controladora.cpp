@@ -22,7 +22,7 @@ void Controladora::controlador()
 
 	do
 	{
-		opcion = controlMP();
+		opcion = controlMenu();
 	} while (opcion != 3);
 
 	ofstream salida;
@@ -31,7 +31,7 @@ void Controladora::controlador()
 	salida.close();
 }
 
-int Controladora::controlMP()
+int Controladora::controlMenu()
 {
 	int opcion = Interfaz::menu();
 
@@ -42,255 +42,130 @@ int Controladora::controlMP()
 		int opcionMM;
 		do
 		{
-			opcion = controlMR();
-		} while (opcion != 2);
+			opcion = controlMFactura();
+		} while (opcion != 6);
 		break;
 	}
 	case 2:
 	{
+		int opcionMPaciente;
+		do
+		{
+			opcion = controlMPaciente();
+		} while (opcion != 6);
+		break;
+	}
+	case 3:
+	{
 		int opcionMM;
 		do
 		{
-			opcion = controlMM();
-		} while (opcion != 9);
+			opcion = controlMDoctor();
+		} while (opcion != 6);
 		break;
 	}
-	case 3: Interfaz::salir(); break;
+	case 4:
+	{
+		int opcionMCita;
+		do
+		{
+			opcion = controlMPaciente();
+		} while (opcion != 7);
+		break;
+	}
+	case 5:
+	{
+		int opcionMAgenda;
+		do
+		{
+			opcion = controlMAgenda();
+		} while (opcion != 3);
+		break;
+	}
+	case 6: Interfaz::salir(); break;
 
 	default: Interfaz::defaul(); break;
 	}
 
 	return opcion;
 }
-int Controladora::controlMR()
+
+
+int Controladora::controlMFactura()
 {
-	int opcionMR = Interfaz::MReserva();
-
-	switch (opcionMR)
-	{
-	case 1: Interfaz::MRreserva(empresa); break;
-	case 2: system("cls"); break;
-	}
-
-	return opcionMR;
-}
-int Controladora::controlMM()
-{
-	int opcionMM2 = Interfaz::mantenimiento();
-
-	switch (opcionMM2)
-	{
-	case 1:
-	{
-		int opcionMMR;
-		do
-		{
-			opcionMMR = controlMMReservas();
-		} while (opcionMMR != 6);
-		break;
-	}
-	case 2:
-	{
-		int opcionMMRu;
-		do
-		{
-			opcionMMRu = controlMMRutas();
-		} while (opcionMMRu != 6);
-		break;
-	}
-	case 3:
-	{
-		int opcionMMC;
-		do
-		{
-			opcionMMC = controlMMClientes();
-		} while (opcionMMC != 6);
-		break;
-	}
-	case 4:
-	{
-		int opcionMMP;
-		do
-		{
-			opcionMMP = controlMMPilotos();
-		} while (opcionMMP != 6);
-		break;
-	}
-	case 5:
-	{
-		int opcionMMV;
-		do
-		{
-			opcionMMV = controlMMVendedores();
-		} while (opcionMMV != 6);
-		break;
-	}
-	case 6:
-	{
-		int opcionMMA;
-		do
-		{
-			opcionMMA = controlMMAviones();
-		} while (opcionMMA != 6);
-		break;
-	}
-	case 7:
-	{
-		int opcionMMM;
-		do
-		{
-			opcionMMM = controlMMMotores();
-		} while (opcionMMM != 6);
-		break;
-	}
-	case 8:
-	{
-		int opcionMME;
-		do
-		{
-			opcionMME = controlMMEmpresa();
-		} while (opcionMME != 6);
-		break;
-	}
-	case 9: system("cls"); break;
-	}
-
-	return opcionMM2;
-}
-
-int Controladora::controlMMReservas()
-{
-	int opccionMMR = Interfaz::MMReservas();
+	int opccionMMR = Interfaz::MMFactura();
 
 	switch (opccionMMR)
 	{
-	case 1: Interfaz::MMRingresar(empresa); break;
-	case 2: Interfaz::MMRmodificar(empresa); break;
-	case 3: Interfaz::MMReliminar(empresa); break;
-	case 4: Interfaz::MMRmostrarid(empresa); break;
-	case 5: Interfaz::MMRmostrartodos(empresa); break;
+	case 1: Interfaz::MMFingresar(empresa); break;
+	case 2: Interfaz::MMFanular(empresa); break;
+	case 3: Interfaz::MMFmostrarid(empresa); break;
+	case 4: Interfaz::MMFmostrarPersona(empresa); break;
+	case 5: Interfaz::MMFmostrartodos(empresa); break;
 	case 6: system("cls"); break;
 	}
 
 	return opccionMMR;
 }
-
-int Controladora::controlMMRutas()
+int Controladora::controlMPaciente()
 {
-	int opccionMMRu = Interfaz::MMRutas();
+	int opccionMMRu = Interfaz::MMPaciente();
 
 	switch (opccionMMRu)
 	{
-	case 1: Interfaz::MMRUingresar(empresa); break;
-	case 2: Interfaz::MMRUmodificar(empresa); break;
-	case 3: Interfaz::MMRUeliminar(empresa); break;
-	case 4: Interfaz::MMRUmostrarid(empresa); break;
-	case 5: Interfaz::MMRUmostrartodos(empresa); break;
+	case 1: Interfaz::MMPingresar(empresa); break;
+	case 2: Interfaz::MMPeliminar(empresa); break;
+	case 3: Interfaz::MMPmostrarid(empresa); break;
+	case 4: Interfaz::MMPmostrarPersona(empresa); break;
+	case 5: Interfaz::MMPmostrartodos(empresa); break;
 	case 6: system("cls"); break;
 	}
 
 	return opccionMMRu;
 }
-
-int Controladora::controlMMClientes()
+int Controladora::controlMDoctor()
 {
-	int opccionMMC = Interfaz::MMClientes();
+	int opccionMMD = Interfaz::MMDoctor();
 
-	switch (opccionMMC)
+	switch (opccionMMD)
 	{
-	case 1: Interfaz::MMCingresar(empresa); break;
-	case 2: Interfaz::MMCmodificar(empresa); break;
-	case 3: Interfaz::MMCeliminar(empresa); break;
-	case 4: Interfaz::MMCmostrarid(empresa); break;
-	case 5: Interfaz::MMCmostrartodos(empresa); break;
+	case 1: Interfaz::MMDingresar(empresa); break;
+	case 2: Interfaz::MMDmodificar(empresa); break;
+	case 3: Interfaz::MMDeliminar(empresa); break;
+	case 4: Interfaz::MMDmostrarid(empresa); break;
+	case 5: Interfaz::MMDmostrartodos(empresa); break;
 	case 6: system("cls"); break;
 	}
 
-	return opccionMMC;
+	return opccionMMD;
 }
-
-int Controladora::controlMMPilotos()
+int Controladora::controlMCita()
 {
 
-	int opccionMMP = Interfaz::MMPilotos();
+	int opccionMMP = Interfaz::MMCita();
 
 	switch (opccionMMP)
 	{
-	case 1: Interfaz::MMPingresar(empresa); break;
-	case 2: Interfaz::MMPmodificar(empresa); break;
-	case 3: Interfaz::MMPeliminar(empresa); break;
-	case 4: Interfaz::MMPmostrarid(empresa); break;
-	case 5: Interfaz::MMPmostrartodos(empresa); break;
-	case 6: system("cls"); break;
+	case 1: Interfaz::MMCIingresar(empresa); break;
+	case 2: Interfaz::MMCImodificar(empresa); break;
+	case 3: Interfaz::MMCIeliminar(empresa); break;
+	case 4: Interfaz::MMCImostrarid(empresa); break;
+	case 5: Interfaz::MMFCImostrarPersona(empresa); break;
+	case 6: Interfaz::MMCImostrartodos(empresa); break;
+	case 7: system("cls"); break;
 	}
 
 	return opccionMMP;
 }
-
-int Controladora::controlMMVendedores()
+int Controladora::controlMAgenda()
 {
-	int opccionMMV = Interfaz::MMVendedores();
+	int opccionMMV = Interfaz::MMAgenda();
 
 	switch (opccionMMV)
 	{
-	case 1: Interfaz::MMVingresar(empresa); break;
-	case 2: Interfaz::MMVmodificar(empresa); break;
-	case 3: Interfaz::MMVeliminar(empresa); break;
-	case 4: Interfaz::MMVmostrarid(empresa); break;
-	case 5: Interfaz::MMVmostrartodos(empresa); break;
-	case 6: system("cls"); break;
+	case 1: Interfaz::MMFAmostrarFecha(empresa); break;
+	case 2: Interfaz::MMFAmostrarHoy(empresa); break;
+	case 3: system("cls"); break;
 	}
-
 	return opccionMMV;
-}
-
-int Controladora::controlMMAviones()
-{
-	int opccionMMA = Interfaz::MMAviones();
-
-	switch (opccionMMA)
-	{
-	case 1: Interfaz::MMAingresar(empresa); break;
-	case 2: Interfaz::MMAmodificar(empresa); break;
-	case 3: Interfaz::MMAeliminar(empresa); break;
-	case 4: Interfaz::MMAmostrarid(empresa); break;
-	case 5: Interfaz::MMAmostrartodos(empresa); break;
-	case 6: system("cls"); break;
-	}
-
-	return opccionMMA;
-}
-
-int Controladora::controlMMMotores()
-{
-	int opccionMMM = Interfaz::MMMotores();
-
-	switch (opccionMMM)
-	{
-	case 1: Interfaz::MMMingresar(empresa); break;
-	case 2: Interfaz::MMMmodificar(empresa); break;
-	case 3: Interfaz::MMMeliminar(empresa); break;
-	case 4: Interfaz::MMMmostrarid(empresa); break;
-	case 5: Interfaz::MMMmostrartodos(empresa); break;
-	case 6: system("cls"); break;
-	}
-
-	return opccionMMM;
-}
-
-int Controladora::controlMMEmpresa()
-{
-	int opccionMME = Interfaz::MMEmpresa();
-
-	switch (opccionMME)
-	{
-	case 1: Interfaz::MMEingresar(empresa); break;
-	case 2: Interfaz::MMEmodificar(empresa); break;
-	case 3: Interfaz::MMEeliminar(empresa); break;
-	case 4: Interfaz::MMEmostrarid(empresa); break;
-	case 5: Interfaz::MMEmostrartodos(empresa); break;
-	case 6: system("cls"); break;
-	}
-
-	return opccionMME;
 }

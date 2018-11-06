@@ -23,7 +23,7 @@ public:
 	
 	~Cita();
 
-	string getId();
+	string getID();
 	Doctor * getDoctor();
 	Paciente* getPaciente();
 	Fecha* getFecha();

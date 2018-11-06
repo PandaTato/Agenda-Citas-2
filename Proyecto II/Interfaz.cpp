@@ -11,22 +11,8 @@ Empresa * Interfaz::inicio()
 	return new Empresa(nombre);
 }
 
+//menu
 int Interfaz::menu()
-{
-	return 0;
-}
-
-int Interfaz::MFactura()
-{
-	return 0;
-}
-
-bool Interfaz::MFactura(Empresa *)
-{
-	return false;
-}
-
-int Interfaz::mantenimiento()
 {
 	int opcionMm;
 
@@ -37,7 +23,7 @@ int Interfaz::mantenimiento()
 	cout << "#----------------------------------------------#" << endl;
 	cout << "# 1 | Factura                                  #" << endl;
 	cout << "#----------------------------------------------#" << endl;
-	cout << "# 2 | Cliente                                  #" << endl;
+	cout << "# 2 | Paciente                                 #" << endl;
 	cout << "#----------------------------------------------#" << endl;
 	cout << "# 3 | Doctor                                   #" << endl;
 	cout << "#----------------------------------------------#" << endl;
@@ -54,6 +40,7 @@ int Interfaz::mantenimiento()
 	return opcionMm;
 }
 
+//Menu Factura
 int Interfaz::MMFactura()
 {
 	int opMMP;
@@ -80,7 +67,6 @@ int Interfaz::MMFactura()
 
 	return opMMP;
 }
-
 bool Interfaz::MMFingresar(Empresa * e)
 {
 	if (e->getCitas()->cantidadElementos() == 0) { cout <<"----------------------------------"<< "No hay datos" << "----------------------------------" << endl; return false; }
@@ -100,7 +86,7 @@ bool Interfaz::MMFingresar(Empresa * e)
 					bool find = false;
 					for (int i = 0; i < e->getFacturas()->cantidadElementos(); i++) {
 						if (e->getFacturas()->getElemento(i)->getEstado() != "NULO") {
-							if (e->getFacturas()->getElemento(i)->getAgenda()->getId() == id) {
+							if (e->getFacturas()->getElemento(i)->getAgenda()->getID() == id) {
 								find = true;
 							}
 						}
@@ -152,7 +138,6 @@ bool Interfaz::MMFingresar(Empresa * e)
 		return true;
 	}
 }
-
 bool Interfaz::MMFanular(Empresa *e)
 {
 	bool op1 = true;
@@ -182,7 +167,6 @@ bool Interfaz::MMFanular(Empresa *e)
 	}
 	return false;
 }
-
 bool Interfaz::MMFmostrarid(Empresa * e)
 {
 	bool op1 = true;
@@ -215,12 +199,10 @@ bool Interfaz::MMFmostrarid(Empresa * e)
 	}
 	return false;
 }
-
 bool Interfaz::MMFmostrarPersona(Empresa * e)
 {
 	return false;
 }
-
 bool Interfaz::MMFmostrartodos(Empresa * e)
 {
 	system("cls");
@@ -260,7 +242,6 @@ int Interfaz::MMPaciente()
 
 	return opMMP;
 }
-
 bool Interfaz::MMPingresar(Empresa * e) //?
 {
 	string nom, ape, tel,day,month,year,numm;
@@ -285,18 +266,15 @@ bool Interfaz::MMPingresar(Empresa * e) //?
 	e->getPacientes()->agregarElemento(pa);
 	return false;
 }
-
 bool Interfaz::MMPmodificar(Empresa * e)
 {
 
 	return false;
 }
-
 bool Interfaz::MMPeliminar(Empresa * e)
 {
 	return false;
 }
-
 bool Interfaz::MMPmostrarid(Empresa * e)
 {
 	bool op1 = true;
@@ -329,12 +307,10 @@ bool Interfaz::MMPmostrarid(Empresa * e)
 	}
 	return false;
 }
-
 bool Interfaz::MMPmostrarPersona(Empresa *)
 {
 	return false;
 }
-
 bool Interfaz::MMPmostrartodos(Empresa * e)
 {
 	system("cls");
@@ -374,22 +350,18 @@ int Interfaz::MMDoctor()
 
 	return opMMP;
 }
-
 bool Interfaz::MMDingresar(Empresa *)
 {
 	return false;
 }
-
 bool Interfaz::MMDmodificar(Empresa *)
 {
 	return false;
 }
-
 bool Interfaz::MMDeliminar(Empresa *)
 {
 	return false;
 }
-
 bool Interfaz::MMDmostrarid(Empresa * e)
 {
 	bool op1 = true;
@@ -422,7 +394,6 @@ bool Interfaz::MMDmostrarid(Empresa * e)
 	}
 	return false;
 }
-
 bool Interfaz::MMDmostrartodos(Empresa * e)
 {
 	system("cls");
@@ -462,22 +433,18 @@ int Interfaz::MMCita()
 
 	return opMMP;
 }
-
 bool Interfaz::MMCIingresar(Empresa *)
 {
 	return false;
 }
-
 bool Interfaz::MMCImodificar(Empresa *)
 {
 	return false;
 }
-
 bool Interfaz::MMCIeliminar(Empresa *)
 {
 	return false;
 }
-
 bool Interfaz::MMCImostrarid(Empresa * e)
 {
 	bool op1 = true;
@@ -510,12 +477,10 @@ bool Interfaz::MMCImostrarid(Empresa * e)
 	}
 	return false;
 }
-
 bool Interfaz::MMFCImostrarPersona(Empresa *)
 {
 	return false;
 }
-
 bool Interfaz::MMCImostrartodos(Empresa *e)
 {
 	system("cls");
@@ -549,16 +514,16 @@ int Interfaz::MMAgenda()
 
 	return opMMP;
 }
-
 bool Interfaz::MMFAmostrarFecha(Empresa * e)
 {
-	//como hacer con el wday?
-	string d, m, a;
+	/*
 	int dd, mm, aa;
+
 	Fecha * fecha = new Fecha(dd,mm,aa);
+	*/
+
 	return false;
 }
-
 bool Interfaz::MMFAmostrarHoy(Empresa *e)
 {
 	Fecha * fecha = new Fecha();
@@ -590,11 +555,5 @@ bool Interfaz::MMFAmostrarHoy(Empresa *e)
 	return false;
 }
 
-
-void Interfaz::salir()
-{
-}
-
-void Interfaz::defaul()
-{
-}
+void Interfaz::salir(){}
+void Interfaz::defaul(){}

@@ -10,15 +10,8 @@ class Interfaz
 public:
 	static Empresa* inicio();
 
+	//menu
 	static int menu();
-
-	//venta
-	static int MFactura();
-	static bool MFactura(Empresa*);
-
-	//mantenimiento
-	static int mantenimiento();
-
 
 	static int MMFactura();
 	//Reservas mantenimiento

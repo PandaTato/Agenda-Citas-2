@@ -32,7 +32,7 @@ Cita::Cita(string pID, Doctor * pDoctor, Paciente * pPaciente, Fecha * pFecha, H
 
 Cita::~Cita(){}
 
-string Cita::getId(){	return id;}
+string Cita::getID(){	return id;}
 Doctor * Cita::getDoctor(){	return doctor;}
 Paciente * Cita::getPaciente() { return paciente; }
 Fecha * Cita::getFecha() { return fecha; }

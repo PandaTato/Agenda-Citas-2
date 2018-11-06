@@ -14,11 +14,9 @@ Empresa::~Empresa()
 {
 }
 
-<<<<<<< HEAD
 string Empresa::setNombre() { return nombre; }
 
 void Empresa::getNombre(string pNombre) { this->nombre = pNombre; }
-
 void Empresa::guardar(ofstream&)
 {
 }
@@ -26,7 +24,7 @@ void Empresa::guardar(ofstream&)
 Empresa * Empresa::leer(ifstream&)
 {
 	return new Empresa("");
-=======
+}
 string Empresa::getId()
 {
 	return nombre;
@@ -55,5 +53,4 @@ Lista<Doctor>* Empresa::getDoctores()
 Lista<Factura>* Empresa::getFacturas()
 {
 	return fac;
->>>>>>> f70ecea79873695b79ff1fcc32f6a11d3aa7191f
 }

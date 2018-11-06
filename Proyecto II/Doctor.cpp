@@ -1,7 +1,7 @@
 #include "Doctor.h"
 
 Doctor::Doctor() : Persona() {}
-Doctor::Doctor(string ID, string nom, string ape, string tel, string cor, Fecha * fec) : Persona(ID, nom, ape, tel, cor, fec) {}
+Doctor::Doctor(string ID, string nom, string ape, string tel, Fecha * fec): Persona(ID, nom, ape, tel, fec) {}
 
 Doctor::~Doctor() {}
 

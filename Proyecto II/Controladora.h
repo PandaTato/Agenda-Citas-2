@@ -21,19 +21,14 @@ public:
 	void controlador();
 
 	//controles menus del menu principal
-	int controlMP();
-	int controlMR();
-	int controlMM();
+	int controlMenu();
 
 	//controles menus del menu mantenimiento
-	int controlMMReservas();
-	int controlMMRutas();
-	int controlMMClientes();
-	int controlMMPilotos();
-	int controlMMVendedores();
-	int controlMMAviones();
-	int controlMMMotores();
-	int controlMMEmpresa();
+	int controlMFactura();
+	int controlMPaciente();
+	int controlMDoctor();
+	int controlMCita();
+	int controlMAgenda();
 };
 
 #endif // !CONTROLADORA_H

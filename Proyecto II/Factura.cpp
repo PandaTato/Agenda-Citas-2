@@ -38,7 +38,7 @@ Factura::Factura(string es, string pID, float pSubTotal, float pDescuento, float
 
 Factura::~Factura(){}
 
-string Factura::getId(){	return id;}
+string Factura::getID(){	return id;}
 float Factura::getSubTotal() { return subTotal; }
 float Factura::getDescuento() { return descuento; }
 float Factura::getImpuestoVenta() { return impuestoVenta; }

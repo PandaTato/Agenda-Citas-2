@@ -22,7 +22,7 @@ public:
 
 	~Factura();
 
-	string getId();
+	string getID();
 	float getSubTotal();
 	float getDescuento();
 	float getImpuestoVenta();

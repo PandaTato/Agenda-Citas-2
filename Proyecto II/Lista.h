@@ -122,7 +122,7 @@ inline bool Lista<T>::eliminarElemento(int posicion)
 	int contador = 0;
 	Nodo<T>* actual = primero;
 
-	if (posicion = < this->cantidadElementos() || actual != NULL)
+	if (posicion <= this->cantidadElementos() || actual != NULL)
 	{
 		while (contador != posicion) { actual->getSiguiente(); }
 		delete actual;

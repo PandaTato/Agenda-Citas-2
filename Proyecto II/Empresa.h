@@ -11,32 +11,27 @@ public:
 	Empresa(string);
 	~Empresa();
 
+	string setNombre();
+
+	void getNombre(string);
 	string getId();
 	Lista<Cita>* getCitas();
 	Agenda *getAgenda();
 	Lista<Paciente>* getPacientes();
 	Lista<Doctor>* getDoctores();
 	Lista<Factura>* getFacturas();
-private:
-	string nombre;
-<<<<<<< HEAD
-
-	string setNombre();
-	void getNombre(string);
 
 	void guardar(ofstream&);
 	static Empresa* leer(ifstream&);
-};
-=======
+
+private:
+	string nombre;
+
 	Lista<Cita>* cits;
 	Agenda *ag;
 	Lista<Paciente>* pa;
 	Lista<Doctor>* doc;
 	Lista<Factura>* fac;
-
 };
-
-	
->>>>>>> f70ecea79873695b79ff1fcc32f6a11d3aa7191f
 
 #endif // !EMPRESA_H
