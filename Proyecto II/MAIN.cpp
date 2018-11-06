@@ -1,13 +1,9 @@
-#include <iostream>
-#include <sstream>
-#include <string>
+#include "Controladora.h"
 
-using namespace std;
 
 int main()
 {
-
-
-	system("pause");
+	Controladora CONT;
+	CONT.controlador();
 	return 0;
 }
