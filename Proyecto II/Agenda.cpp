@@ -19,13 +19,13 @@ string Agenda::toString()
 	return r.str();
 }
 
-string Agenda::obtenerAgenda(Doctor * doc)
+string Agenda::obtenerAgenda(Doctor * doc, Fecha *fech)
 {
 	stringstream s;
 	int yaux = 0;
 	int daux = 0;
 	int maux = 0;
-	Fecha * fech = new Fecha();
+	//Fecha * fech = new Fecha();
 	string Dsem[] = { "Domingo","Lunes","Martes","Miercoles","Jueves", "Viernes", "Sabado" };
 	yaux = fech->getAnnio();
 	maux = fech->getMes();

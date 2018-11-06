@@ -21,8 +21,6 @@ string Doctor::toString()
 		<< "#----------------------------------------------#" << endl
 		<< "#     Telefono     | " << telefono << endl
 		<< "#----------------------------------------------#" << endl
-		<< "#      Correo      | " << correo << endl
-		<< "#----------------------------------------------#" << endl
 		<< "# Fecha Nacimiento | " << nacimiento->getAnnio() << " / " << nacimiento->getMes() << " / " << nacimiento->getDia() << endl
 		<< "#----------------------------------------------#" << endl;
 
@@ -36,14 +34,13 @@ void Doctor::guardar(ofstream & salida)
 	salida << nombre << '\t';
 	salida << apellido << '\t';
 	salida << telefono << '\t';
-	salida << correo << '\t';
 	nacimiento->guardar(salida);
 }
 
 
 Doctor * Doctor::leer(ifstream & entrada)
 {
-	string id, nom, ape, cor, tel;
+	string id, nom, ape, tel;
 	Fecha* fec;
 
 
@@ -51,9 +48,8 @@ Doctor * Doctor::leer(ifstream & entrada)
 	getline(entrada, nom, '\t');
 	getline(entrada, ape, '\t');
 	getline(entrada, tel, '\t');
-	getline(entrada, cor, '\t');
 
 	fec = Fecha::leer(entrada);
 
-	return new Doctor(id, nom, ape, tel, cor, fec);
+	return new Doctor(id, nom, ape, tel, fec);
 }
