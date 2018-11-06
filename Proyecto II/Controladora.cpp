@@ -23,7 +23,7 @@ void Controladora::controlador()
 	do
 	{
 		opcion = controlMenu();
-	} while (opcion != 3);
+	} while (opcion != 6);
 
 	ofstream salida;
 	salida.open(Ruta.c_str());
@@ -33,17 +33,17 @@ void Controladora::controlador()
 
 int Controladora::controlMenu()
 {
-	int opcion = Interfaz::menu();
+	int opciones = Interfaz::menu();
 
-	switch (opcion)
+	switch (opciones)
 	{
 	case 1:
 	{
-		int opcionMM;
+		int opcionMFactura;
 		do
 		{
-			opcion = controlMFactura();
-		} while (opcion != 6);
+			opcionMFactura = controlMFactura();
+		} while (opcionMFactura != 6);
 		break;
 	}
 	case 2:
@@ -51,17 +51,17 @@ int Controladora::controlMenu()
 		int opcionMPaciente;
 		do
 		{
-			opcion = controlMPaciente();
-		} while (opcion != 6);
+			opcionMPaciente = controlMPaciente();
+		} while (opcionMPaciente != 6);
 		break;
 	}
 	case 3:
 	{
-		int opcionMM;
+		int opcionMDoctor;
 		do
 		{
-			opcion = controlMDoctor();
-		} while (opcion != 6);
+			opcionMDoctor = controlMDoctor();
+		} while (opcionMDoctor != 6);
 		break;
 	}
 	case 4:
@@ -69,8 +69,8 @@ int Controladora::controlMenu()
 		int opcionMCita;
 		do
 		{
-			opcion = controlMPaciente();
-		} while (opcion != 7);
+			opcionMCita = controlMCita();
+		} while (opcionMCita != 6);
 		break;
 	}
 	case 5:
@@ -78,8 +78,8 @@ int Controladora::controlMenu()
 		int opcionMAgenda;
 		do
 		{
-			opcion = controlMAgenda();
-		} while (opcion != 3);
+			opcionMAgenda = controlMAgenda();
+		} while (opcionMAgenda != 3);
 		break;
 	}
 	case 6: Interfaz::salir(); break;
@@ -87,7 +87,7 @@ int Controladora::controlMenu()
 	default: Interfaz::defaul(); break;
 	}
 
-	return opcion;
+	return opciones;
 }
 
 
@@ -109,9 +109,9 @@ int Controladora::controlMFactura()
 }
 int Controladora::controlMPaciente()
 {
-	int opccionMMRu = Interfaz::MMPaciente();
+	int opccionMMP = Interfaz::MMPaciente();
 
-	switch (opccionMMRu)
+	switch (opccionMMP)
 	{
 	case 1: Interfaz::MMPingresar(empresa); break;
 	case 2: Interfaz::MMPeliminar(empresa); break;
@@ -121,7 +121,7 @@ int Controladora::controlMPaciente()
 	case 6: system("cls"); break;
 	}
 
-	return opccionMMRu;
+	return opccionMMP;
 }
 int Controladora::controlMDoctor()
 {
@@ -142,9 +142,9 @@ int Controladora::controlMDoctor()
 int Controladora::controlMCita()
 {
 
-	int opccionMMP = Interfaz::MMCita();
+	int opccionMMC = Interfaz::MMCita();
 
-	switch (opccionMMP)
+	switch (opccionMMC)
 	{
 	case 1: Interfaz::MMCIingresar(empresa); break;
 	case 2: Interfaz::MMCImodificar(empresa); break;
@@ -155,17 +155,17 @@ int Controladora::controlMCita()
 	case 7: system("cls"); break;
 	}
 
-	return opccionMMP;
+	return opccionMMC;
 }
 int Controladora::controlMAgenda()
 {
-	int opccionMMV = Interfaz::MMAgenda();
+	int opccionMMA = Interfaz::MMAgenda();
 
-	switch (opccionMMV)
+	switch (opccionMMA)
 	{
 	case 1: Interfaz::MMFAmostrarFecha(empresa); break;
 	case 2: Interfaz::MMFAmostrarHoy(empresa); break;
 	case 3: system("cls"); break;
 	}
-	return opccionMMV;
+	return opccionMMA;
 }
