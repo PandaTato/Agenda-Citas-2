@@ -1,7 +1,7 @@
 #include "Doctor.h"
 
 Doctor::Doctor() : Persona() {}
-Doctor::Doctor(string ID, string nom, string ape, string tel, Fecha * fec): Persona(ID, nom, ape, tel, fec) {}
+Doctor::Doctor(string ID, string nom, string ape, string tel): Persona(ID, nom, ape, tel) {}
 
 Doctor::~Doctor() {}
 
@@ -20,8 +20,6 @@ string Doctor::toString()
 		<< "#     Apellidos    | " << apellido << endl
 		<< "#----------------------------------------------#" << endl
 		<< "#     Telefono     | " << telefono << endl
-		<< "#----------------------------------------------#" << endl
-		<< "# Fecha Nacimiento | " << nacimiento->getAnnio() << " / " << nacimiento->getMes() << " / " << nacimiento->getDia() << endl
 		<< "#----------------------------------------------#" << endl;
 
 	return r.str();
@@ -34,14 +32,12 @@ void Doctor::guardar(ofstream & salida)
 	salida << nombre << '\t';
 	salida << apellido << '\t';
 	salida << telefono << '\t';
-	nacimiento->guardar(salida);
 }
 
 
 Doctor * Doctor::leer(ifstream & entrada)
 {
 	string id, nom, ape, tel;
-	Fecha* fec;
 
 
 	getline(entrada, id, '\t');
@@ -49,7 +45,6 @@ Doctor * Doctor::leer(ifstream & entrada)
 	getline(entrada, ape, '\t');
 	getline(entrada, tel, '\t');
 
-	fec = Fecha::leer(entrada);
 
-	return new Doctor(id, nom, ape, tel, fec);
+	return new Doctor(id, nom, ape, tel);
 }

@@ -79,7 +79,7 @@ string Fecha::toString()
 
 	return string(r.str());
 }
-int getWeekDay(int yy, int mm, int dd)
+int Fecha::getWeekDay(int yy, int mm, int dd)
 {
 	int rst =
 		dd

@@ -9,7 +9,7 @@ class Paciente : public Persona
 {
 public:
 	Paciente();
-	Paciente(string, string, string, string, Fecha*);
+	Paciente(string, string, string, string);
 	~Paciente();
 
 	//to string
