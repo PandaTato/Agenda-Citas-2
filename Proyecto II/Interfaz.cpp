@@ -43,7 +43,7 @@ int Interfaz::menu()
 //Menu Factura
 int Interfaz::MMFactura()
 {
-	int opMMP;
+	int opF;
 
 	system("cls");
 
@@ -60,12 +60,12 @@ int Interfaz::MMFactura()
 	cout << "#----------------------------------------------#" << endl;
 	cout << "# 5 | Volver                                   #" << endl;
 	cout << "#----------------------------------------------#" << endl;
-	cout << "# Digite la opcion que desee: " << endl; cin >> opMMP;
+	cout << "# Digite la opcion que desee: " << endl; cin >> opF;
 	cout << "#----------------------------------------------#" << endl;
 
 	system("pause");
 
-	return opMMP;
+	return opF;
 }
 bool Interfaz::MMFingresar(Empresa * e)
 {
@@ -80,6 +80,7 @@ bool Interfaz::MMFingresar(Empresa * e)
 			system("cls");
 			cout << "----------------------------------" << endl;
 			cout << "Digite el Id de la cita" << endl;
+			cin.ignore();
 			getline(cin, id);
 			if (soloNumeros(id)) {
 				if (e->getCitas()->existeID(id)) { //ver el metodo
@@ -101,12 +102,15 @@ bool Interfaz::MMFingresar(Empresa * e)
 			system("cls");
 			cout << "----------------------------------" << endl;
 			cout << "Digite el subtotal: ";
+			cin.ignore();
 			getline(cin, st);
 			cout << "----------------------------------" << endl;
 			cout << endl << "Digite el descuento(0-100): ";
+			cin.ignore();
 			getline(cin, desc);
 			cout << "----------------------------------" << endl;
 			cout << endl << "Digite el impuesto(Max 20): ";
+			cin.ignore();
 			getline(cin, imp);
 			if (soloNumeros(st)&&soloNumeros(desc)&&soloNumeros(imp)) {
 				stt = convertirFloat(st);
@@ -147,6 +151,7 @@ bool Interfaz::MMFanular(Empresa *e)
 		system("cls");
 		cout << "-----------------------------------------------" << endl;
 		cout << "Digite el Id de la Factura a anular" << endl;
+		cin.ignore();
 		getline(cin, id);
 		if (soloNumeros(id)) {
 			if (e->getFacturas()->existeID(id)) { //ver el metodo
@@ -176,6 +181,7 @@ bool Interfaz::MMFmostrarid(Empresa * e)
 		system("cls");
 		cout << "--------------------------------------" << endl;
 		cout << "Digite el Id de la Factura " << endl;
+		cin.ignore();
 		getline(cin, id);
 		if (soloNumeros(id)) {
 			if (e->getFacturas()->existeID(id)) { //ver el metodo
@@ -218,7 +224,7 @@ bool Interfaz::MMFmostrartodos(Empresa * e)
 
 int Interfaz::MMPaciente()
 {
-	int opMMP;
+	int opP;
 
 	system("cls");
 
@@ -237,12 +243,12 @@ int Interfaz::MMPaciente()
 	cout << "#----------------------------------------------#" << endl;
 	cout << "# 6 | Volver                                   #" << endl;
 	cout << "#----------------------------------------------#" << endl;
-	cout << "# Digite la opcion que desee: " << endl; cin >> opMMP;
+	cout << "# Digite la opcion que desee: " << endl; cin >> opP;
 	cout << "#----------------------------------------------#" << endl;
 
 	system("pause");
 
-	return opMMP;
+	return opP;
 }
 bool Interfaz::MMPingresar(Empresa * e) //?
 {
@@ -256,9 +262,11 @@ bool Interfaz::MMPingresar(Empresa * e) //?
 	while (op) {
 		cout << "#----------------------------------------------#" << endl;
 		cout << "Digite unicamente el nombre: ";
+		cin.ignore();
 		getline(cin, nom);
 		cout << "#----------------------------------------------#" << endl;
 		cout << "Digite el apellido: ";
+		cin.ignore();
 		getline(cin, ape);
 		if (soloLetras(nom)) { op = false; }
 		else { 
@@ -273,6 +281,7 @@ bool Interfaz::MMPingresar(Empresa * e) //?
 	while (op1) {
 		cout << "#----------------------------------------------#" << endl;
 		cout << "Digite el telefono: ";
+		cin.ignore();
 		getline(cin, tel);
 		if (soloNumeros(tel)) { op1 = false; }
 		else{ 
@@ -286,6 +295,7 @@ bool Interfaz::MMPingresar(Empresa * e) //?
 	while (op2) {
 		cout << "#----------------------------------------------#" << endl;
 		cout << "Digite el ID de la persona: ";
+		cin.ignore();
 		getline(cin, numm);
 		if (soloNumeros(numm)) { 
 			if(e->getPacientes()->existeID(numm)){
@@ -320,6 +330,7 @@ bool Interfaz::MMPmodificar(Empresa * e)
 		system("cls");
 		cout << "--------------------------------------" << endl;
 		cout << "Digite el Id del Paciente " << endl;
+		cin.ignore();
 		getline(cin, id);
 		if (soloNumeros(id)) {
 			if (e->getPacientes()->existeID(id)) { //ver el metodo
@@ -352,6 +363,7 @@ bool Interfaz::MMPmodificar(Empresa * e)
 		cout << "4 ID" << endl;
 		cout << "5 SALIR AL MENU" << endl;
 		cout << "Digite el numero: ";
+		cin.ignore();
 		getline(cin, swt);
 		
 		if (soloNumeros(swt)) {
@@ -363,6 +375,7 @@ bool Interfaz::MMPmodificar(Empresa * e)
 					system("cls");
 					cout << "-----------------------------------------------" << endl;
 					cout << "Nombre nuevo: ";
+					cin.ignore();
 					getline(cin, aux);
 					if (soloLetras(aux)) {
 						e->getPacientes()->getID(id)->setNombre(aux);
@@ -373,6 +386,7 @@ bool Interfaz::MMPmodificar(Empresa * e)
 					system("cls");
 					cout << "-----------------------------------------------" << endl;
 					cout << "Apellido nuevo: ";
+					cin.ignore();
 					getline(cin, aux);
 					e->getPacientes()->getID(id)->setApellido(aux);
 					break;
@@ -380,6 +394,7 @@ bool Interfaz::MMPmodificar(Empresa * e)
 					system("cls");
 					cout << "-----------------------------------------------" << endl;
 					cout << "Telefono nuevo: ";
+					cin.ignore();
 					getline(cin, aux);
 					e->getPacientes()->getID(id)->setTelefono(aux);
 					break;
@@ -387,6 +402,7 @@ bool Interfaz::MMPmodificar(Empresa * e)
 					system("cls");
 					cout << "-----------------------------------------------" << endl;
 					cout << "ID nuevo: ";
+					cin.ignore();
 					getline(cin, aux);
 					e->getPacientes()->getID(id)->setID(aux);
 					break;
@@ -399,6 +415,7 @@ bool Interfaz::MMPmodificar(Empresa * e)
 				}
 				cout << "-----------------------------------------------" << endl;
 				cout << "Desea hacer mas cambios en este paciente? S/N ";
+				cin.ignore();
 				getline(cin, cambios);
 				if (cambios == "N" || cambios == "n") {
 					op1 = false;
@@ -433,6 +450,7 @@ bool Interfaz::MMPeliminar(Empresa * e)
 		system("cls");
 		cout << "--------------------------------------" << endl;
 		cout << "Digite el Id del Paciente " << endl;
+		cin.ignore();
 		getline(cin, id);
 		if (soloNumeros(id)) {
 			if (e->getPacientes()->existeID(id)) { //ver el metodo
@@ -484,6 +502,7 @@ bool Interfaz::MMPmostrarid(Empresa * e)
 		system("cls");
 		cout << "--------------------------------------" << endl;
 		cout << "Digite el Id del Paciente " << endl;
+		cin.ignore();
 		getline(cin, id);
 		if (soloNumeros(id)) {
 			if (e->getPacientes()->existeID(id)) { //ver el metodo
@@ -621,6 +640,14 @@ bool Interfaz::MMDingresar(Empresa * e)
 }
 bool Interfaz::MMDmodificar(Empresa * e)
 {
+	if (e->getDoctores()->cantidadElementos() == 0) {
+		system("cls");
+		cout << "#---------------------------------------------------#" << endl;
+		cout << "              No hay doctores registradas" << endl;
+		cout << "#---------------------------------------------------#" << endl;
+		system("pause");
+		return false;
+	}
 	bool op = true;
 	bool op1 = true;
 	string id, swt, aux, cambios;
@@ -741,6 +768,7 @@ bool Interfaz::MMDeliminar(Empresa *e)
 		system("cls");
 		cout << "--------------------------------------" << endl;
 		cout << "Digite el Id del Doctor " << endl;
+		cin.ignore();
 		getline(cin, id);
 		if (soloNumeros(id)) {
 			if (e->getDoctores()->existeID(id)) { //ver el metodo
@@ -792,6 +820,7 @@ bool Interfaz::MMDmostrarid(Empresa * e)
 		system("cls");
 		cout << "--------------------------------------" << endl;
 		cout << "Digite el Id del Doctor " << endl;
+		cin.ignore();
 		getline(cin, id);
 		if (soloNumeros(id)) {
 			if (e->getDoctores()->existeID(id)) { //ver el metodo
@@ -878,6 +907,7 @@ bool Interfaz::MMCIingresar(Empresa *e)
 			system("cls");
 			cout << "--------------------------------------" << endl;
 			cout << "Digite el Id del Paciente " << endl;
+			cin.ignore();
 			getline(cin, id);
 			if (soloNumeros(id)) {
 				if (e->getPacientes()->existeID(id)) { //ver el metodo
@@ -903,6 +933,7 @@ bool Interfaz::MMCIingresar(Empresa *e)
 			system("cls");
 			cout << "--------------------------------------" << endl;
 			cout << "Digite el Id del Doctor " << endl;
+			cin.ignore();
 			getline(cin, id2);
 			if (soloNumeros(id2)) {
 				if (e->getDoctores()->existeID(id2)) { //ver el metodo
@@ -927,12 +958,15 @@ bool Interfaz::MMCIingresar(Empresa *e)
 		while (op2) {
 			cout << "-----------------------------------------------" << endl;
 			cout << "Digite el dia: " << endl;
+			cin.ignore();
 			getline(cin, dd);
 			cout << "-----------------------------------------------" << endl;
 			cout << "Digite el mes: " << endl;
+			cin.ignore();
 			getline(cin, mm);
 			cout << "-----------------------------------------------" << endl;
 			cout << "Digite el anio: " << endl;
+			cin.ignore();
 			getline(cin, aa);
 
 			if (soloNumeros(dd) && soloNumeros(mm) && soloNumeros(aa)) {
@@ -962,9 +996,11 @@ bool Interfaz::MMCIingresar(Empresa *e)
 		while (op3) {
 			cout << "-----------------------------------------------" << endl;
 			cout << "Digite la hora(7-16): " << endl;
+			cin.ignore();
 			getline(cin, hh);
 			cout << "-----------------------------------------------" << endl;
 			cout << "Digite los minutos(0-50): " << endl;
+			cin.ignore();
 			getline(cin, mimi);
 
 			if (soloNumeros(hh) && soloNumeros(mimi) ) {
@@ -996,13 +1032,78 @@ bool Interfaz::MMCIingresar(Empresa *e)
 	}
 	return true;
 }
-bool Interfaz::MMCImodificar(Empresa *)
+bool Interfaz::MMCImodificar(Empresa *e)
 {
-	return false;
+	if (e->getCitas()->cantidadElementos() == 0) {
+		system("cls");
+		cout << "#---------------------------------------------------#" << endl;
+		cout << "              No hay Citas registradas" << endl;
+		cout << "#---------------------------------------------------#" << endl;
+		system("pause");
+		return false;
+	}
+
+	return true;
 }
-bool Interfaz::MMCIeliminar(Empresa *)
+bool Interfaz::MMCIeliminar(Empresa *e)
 {
-	return false;
+	bool opp = true;
+	bool op2 = true;
+	string id;
+
+	if (e->getCitas()->cantidadElementos() == 0) {
+		system("cls");
+		cout << "#---------------------------------------------------#" << endl;
+		cout << "              No hay Citas registradas" << endl;
+		cout << "#---------------------------------------------------#" << endl;
+		system("pause");
+		return false;
+	}
+	while (opp) {
+		system("cls");
+		cout << "--------------------------------------" << endl;
+		cout << "Digite el Id de la cita " << endl;
+		cin.ignore();
+		getline(cin, id);
+		if (soloNumeros(id)) {
+			if (e->getCitas()->existeID(id)) { //ver el metodo
+				opp = false;
+			}
+			else {
+				cout << "-----------------------------------------------" << endl;
+				cout << "|                   No existe                 |" << endl;
+				cout << "-----------------------------------------------" << endl;
+				system("pause");
+				return false;
+			}
+		}
+		else {
+			system("cls");
+			cout << "-----------------------------------------------" << endl;
+			cout << "                  No es numero" << endl;
+			cout << "-----------------------------------------------" << endl;
+			system("pause");
+		}
+	}
+	/////////////////////////////////
+	for (int i = 0; i < e->getFacturas()->cantidadElementos(); i++) {
+		if (e->getFacturas()->getID(convertirString(i))->getAgenda()->getID() == e->getCitas()->getID(id)->getID()) {
+			op2 = false;
+		}
+	}
+
+	if (op2) {
+		e->getCitas()->eliminarElemento(convertirInt(id));
+	}
+	else {
+		system("cls");
+		cout << "-----------------------------------------------" << endl;
+		cout << "             No es posible eliminarlo ya " << endl;
+		cout << "          que ya fue incluido en una factura." << endl;
+		cout << "-----------------------------------------------" << endl;
+		system("pause");
+	}
+	return true;
 }
 bool Interfaz::MMCImostrarid(Empresa * e)
 {
@@ -1084,12 +1185,15 @@ bool Interfaz::MMFAmostrarFecha(Empresa * e)
 	while (op) {
 		cout << "-----------------------------------------------" << endl;
 		cout << "Digite el dia: " << endl;
+		cin.ignore();
 		getline(cin, dd);
 		cout << "-----------------------------------------------" << endl;
 		cout << "Digite el mes: " << endl;
+		cin.ignore();
 		getline(cin, mm);
 		cout << "-----------------------------------------------" << endl;
 		cout << "Digite el anio: " << endl;
+		cin.ignore();
 		getline(cin, aa);
 
 		if (soloNumeros(dd) && soloNumeros(mm) && soloNumeros(aa)) {
@@ -1120,6 +1224,7 @@ bool Interfaz::MMFAmostrarFecha(Empresa * e)
 		system("cls");
 		cout << "-----------------------------------------------" << endl;
 		cout << "Digite el Id del doctor " << endl;
+		cin.ignore();
 		getline(cin, id);
 		cout << "-----------------------------------------------" << endl;
 		if (soloNumeros(id)) {
@@ -1150,6 +1255,7 @@ bool Interfaz::MMFAmostrarHoy(Empresa *e)
 		system("cls");
 		cout << "-----------------------------------------------" << endl;
 		cout << "Digite el Id del doctor" << endl;
+		cin.ignore();
 		getline(cin, id);
 		cout << "-----------------------------------------------" << endl;
 		if (soloNumeros(id)) {
