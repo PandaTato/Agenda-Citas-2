@@ -1276,6 +1276,14 @@ bool Interfaz::MMCIingresar(Empresa *e)
 			system("pause");
 		}
 	}
+	//
+	system("cls");
+	cout << "-----------------------------------------------" << endl;
+	cout << "                  Mostrando agenda" << endl;
+	cout << "-----------------------------------------------" << endl;
+	system("pause");
+	MMFAmostrarFecha(e);
+	//
 	while (op2)
 	{
 		cout << "-----------------------------------------------" << endl;
