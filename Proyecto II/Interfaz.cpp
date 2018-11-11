@@ -1249,9 +1249,8 @@ bool Interfaz::MMCIingresar(Empresa *e)
 	cout << "#----------------------------------------------#" << endl;
 	cout << "#                  Mostrando agenda            #" << endl;
 	cout << "#----------------------------------------------#" << endl;
-	system("pause");
 	cout << e->getAgenda()->obtenerAgenda(e->getDoctores()->getID(id2), fecha);
-	//
+	system("pause");
 	while (agen) {
 		system("cls");
 		cout << "Desea continuar con el ingreso de la cita?  S/N";

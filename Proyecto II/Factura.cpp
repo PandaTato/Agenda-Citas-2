@@ -73,6 +73,7 @@ string Factura::toString()
 void Factura::guardar(ofstream & salida)
 {
 	salida << id << '\t';
+	salida << estado << '\t';
 	salida << subTotal << '\t';
 	salida << descuento << '\t';
 	salida << impuestoVenta << '\t';
@@ -83,17 +84,24 @@ void Factura::guardar(ofstream & salida)
 
 Factura * Factura::leer(ifstream & entrada)
 {
-	string pID, pSubTotal, pDescuento, pImpuestoVenta, pTotal;
+	string pID, pSubTotal, pDescuento, pImpuestoVenta, pTotal,  pEstado;
 	Cita* pAgenda = NULL;
 
 	getline(entrada, pID, '\t');
+	getline(entrada, pEstado, '\t');
 	getline(entrada, pSubTotal, '\t');
 	getline(entrada, pDescuento, '\t');
 	getline(entrada, pImpuestoVenta, '\t');
 	getline(entrada, pTotal, '\n');
 
 	pAgenda = Cita::leer(entrada);
+	float pSubTotal1, pDescuento1, pImpuestoVenta1, pTotal1;
+	pSubTotal1 = convertirFloat(pSubTotal);
+	pDescuento1 = convertirFloat(pDescuento);
+	pImpuestoVenta1 = convertirFloat(pImpuestoVenta);
+	pTotal1 = convertirFloat(pTotal);
 
 
-	return nullptr;
+	Factura* nFactura = new Factura(pID, pEstado, pSubTotal1, pDescuento1, pImpuestoVenta1, pTotal1, pAgenda);
+	return nFactura;
 }
