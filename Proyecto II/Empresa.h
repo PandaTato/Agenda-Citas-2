@@ -9,14 +9,22 @@ class Empresa
 {
 public:
 	Empresa(string);
+	Empresa(string, Agenda*, Lista<Cita>*, Lista<Paciente>*, Lista<Doctor>*, Lista<Factura>*);
 	~Empresa();
 
-	string setNombre();
+    void setNombre(	string );
+	void setAgenda(Agenda *);
+
+	void setCitas(Lista<Cita>*);
+	void setPacientes(Lista<Paciente>* );
+	void setDoctores(Lista<Doctor>* );
+	void setFacturas(Lista<Factura>* );
+
 
 	void getNombre(string);
-	string getId();
-	Lista<Cita>* getCitas();
 	Agenda *getAgenda();
+
+	Lista<Cita>* getCitas();
 	Lista<Paciente>* getPacientes();
 	Lista<Doctor>* getDoctores();
 	Lista<Factura>* getFacturas();
@@ -27,11 +35,11 @@ public:
 private:
 	string nombre;
 
-	Lista<Cita>* cits;
-	Agenda *ag;
-	Lista<Paciente>* pa;
-	Lista<Doctor>* doc;
-	Lista<Factura>* fac;
+	Lista<Cita>* cita;
+	Agenda *agenda;
+	Lista<Paciente>* paciente;
+	Lista<Doctor>* doctor;
+	Lista<Factura>* factura;
 };
 
 #endif // !EMPRESA_H

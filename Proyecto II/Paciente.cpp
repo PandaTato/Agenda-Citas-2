@@ -27,7 +27,6 @@ string Paciente::toString()
 }
 
 void Paciente::guardar(ofstream & salida)
-
 {
 	salida << id << '\t';
 	salida << nombre << '\t';

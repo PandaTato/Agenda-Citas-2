@@ -98,6 +98,7 @@ Cita * Cita::leer(ifstream & entrada)
 	string id;
 
 	getline(entrada, id, '\n');
+
 	Doctor* pDoctor = Doctor::leer(entrada);
 	Paciente* pPaciente = Paciente::leer(entrada);
 	Fecha* pFecha = Fecha::leer(entrada);

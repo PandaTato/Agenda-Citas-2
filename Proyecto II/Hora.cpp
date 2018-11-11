@@ -51,7 +51,6 @@ void Hora::guardar(ofstream & salida)
 	salida << hora << '\t';
 	salida << minutos << '\n';
 }
-
 Hora * Hora::leer(ifstream & entrada)
 {
 	string h, m;

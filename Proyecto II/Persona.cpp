@@ -28,5 +28,4 @@ void Persona::setApellido(string ape){ this->apellido = ape;}
 void Persona::setTelefono(string tel){ this->telefono = tel;}
 
 void Persona::guardar(ofstream &){}
-
 Persona * Persona::leer(ifstream &) { return nullptr; }

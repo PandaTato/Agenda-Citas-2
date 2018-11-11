@@ -26,7 +26,7 @@ private:
 
 public:
 	Fecha();
-	Fecha(int, int, int); //volarselo?
+	Fecha(int, int, int);
 	Fecha(int, int, int, int);
 	~Fecha();
 
