@@ -30,7 +30,7 @@ void Doctor::guardar(ofstream & salida)
 	salida << id << '\t';
 	salida << nombre << '\t';
 	salida << apellido << '\t';
-	salida << telefono << '\t';
+	salida << telefono << '\n';
 }
 
 Doctor * Doctor::leer(ifstream & entrada)
@@ -41,7 +41,7 @@ Doctor * Doctor::leer(ifstream & entrada)
 	getline(entrada, id, '\t');
 	getline(entrada, nom, '\t');
 	getline(entrada, ape, '\t');
-	getline(entrada, tel, '\t');
+	getline(entrada, tel, '\n');
 
 
 	return new Doctor(id, nom, ape, tel);

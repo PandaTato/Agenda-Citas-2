@@ -4,5 +4,7 @@
 2
 117010975	Rodrigo	Castro	88803381
 117010976	Alberto	Rodriguez	5890222
-0
+2
+123456789	Eduardo	Vargas	22608696
+74677467	Rafael	Sattler	25328555
 0
