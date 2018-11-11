@@ -1061,6 +1061,8 @@ bool Interfaz::MMDmostrarid(Empresa * e)
 	}
 
 	bool op1 = true;
+	bool pass = true;
+	bool factss = true;
 	string id;
 	while (op1) {
 		system("cls");
@@ -1087,6 +1089,77 @@ bool Interfaz::MMDmostrarid(Empresa * e)
 			cout << "-----------------------------------------------" << endl;
 			cout << "                  No es numero" << endl;
 			cout << "-----------------------------------------------" << endl;
+		}
+	}
+	while (pass)
+	{
+		string ver;
+		system("cls");
+		cout << "#----------------------------------------------#" << endl;
+		cout << "# Quiere ver todos los pacientes? S/N";
+		getline(cin, ver);
+		cout << endl;
+		cout << "#----------------------------------------------#" << endl;
+
+		if (ver == "N" || ver == "n") {
+			pass = false;
+			system("cls");
+		}
+		else {
+			if (ver == "S" || ver == "s") {
+				if (e->getCitas()->cantidadElementos() == 0) {
+					/*EXCEPION*/
+					system("pause"); system("cls");
+					pass = false;
+				}
+				else {
+					for (int i = 0; i < e->getCitas()->cantidadElementos(); i++) {
+						if (e->getCitas()->getID(convertirString(i))->getDoctor()->getID() == e->getDoctores()->getID(id)->getID()) {
+							cout << e->getCitas()->getID(convertirString(i))->getPaciente()->toString();
+						}
+					}
+				}
+			}
+			else {
+				/*EXCEPION*/
+				system("pause"); system("cls");
+			}
+		}
+
+	}
+	while (factss)
+	{
+		string ver;
+		system("cls");
+		cout << "#----------------------------------------------#" << endl;
+		cout << "# Quiere ver todas las facturas? S/N";
+		getline(cin, ver);
+		cout << endl;
+		cout << "#----------------------------------------------#" << endl;
+
+		if (ver == "N" || ver == "n") {
+			factss = false;
+			system("cls");
+		}
+		else {
+			if (ver == "S" || ver == "s") {
+				if (e->getFacturas()->cantidadElementos() == 0) {
+					/*EXCEPION*/
+					system("pause"); system("cls");
+					factss = false;
+				}
+				else {
+					for (int i = 0; i < e->getFacturas()->cantidadElementos(); i++) {
+						if (e->getFacturas()->getID(convertirString(i))->getAgenda()->getDoctor()->getID() == e->getDoctores()->getID(id)->getID()) {
+							cout << e->getFacturas()->getID(convertirString(i))->toString();
+						}
+					}
+				}
+			}
+			else {
+				/*EXCEPION*/
+				system("pause"); system("cls");
+			}
 		}
 	}
 	return false;
