@@ -20,7 +20,6 @@ public:
 	static bool MMFingresar(Empresa*);
 	static bool MMFanular(Empresa*);
 	static bool MMFmostrarid(Empresa*);
-	static bool MMFmostrarPersona(Empresa*);
 	static bool MMFmostrartodos(Empresa*);
 
 	static int MMPaciente();
@@ -28,9 +27,8 @@ public:
 	static bool MMPingresar(Empresa*);
 	static bool MMPmodificar(Empresa*);
 	static bool MMPeliminar(Empresa*);
-	static bool MMPmostrarid(Empresa*);  //
-	static bool MMPmostrarPersona(Empresa*);
-	static bool MMPmostrartodos(Empresa*);  //
+	static bool MMPmostrarid(Empresa*); 
+	static bool MMPmostrartodos(Empresa*); 
 
 	static int MMDoctor();
 	//Pilotos mantenimiento
@@ -46,7 +44,6 @@ public:
 	static bool MMCImodificar(Empresa*);
 	static bool MMCIeliminar(Empresa*);
 	static bool MMCImostrarid(Empresa*);
-	static bool MMFCImostrarPersona(Empresa*);
 	static bool MMCImostrartodos(Empresa*);
 
 	static int MMAgenda();

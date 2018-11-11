@@ -97,7 +97,7 @@ string Excepcion::Error(int ID)
 		stringstream r;
 		r
 			<< "#----------------------------------------------#" << endl
-			<< "#        La Fecha ingresada no es valida       #" << endl;
+			<< "#     La Fecha u Hora ingresada no es valid    #" << endl;
 		return r.str();
 		break;
 	}
