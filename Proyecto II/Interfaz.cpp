@@ -1028,7 +1028,6 @@ bool Interfaz::MMDmostrarid(Empresa * e)
 		system("cls");
 		cout << "#----------------------------------------------#" << endl;
 		cout << "# Digite el Id del Doctor " << endl;
-		cin.ignore();
 		getline(cin, id);
 		if (soloNumeros(id))
 		{
@@ -1195,24 +1194,12 @@ bool Interfaz::MMCIingresar(Empresa *e)
 	bool op1 = true;
 	bool op2 = true;
 	bool op3 = true;
-	string id, id2, dd, mm, aa, mimi, hh;
+	bool agen = true;
+	string id, id2, dd, mm, aa, mimi, hh,ingreso;
 	Fecha* fecha = NULL;
 	Hora* hora = NULL;
 
-	while (op)
-	{
-		system("cls");
-		cout << "#----------------------------------------------#" << endl;
-		cout << "# Digite el Id del Paciente ";
-		
-		getline(cin, id);
-		if (soloNumeros(id))
-		{
-			if (e->getPacientes()->existeID(id)) { op = false; }
-			else { Excepcion* error = new Excepcion(5); cout << error->toString() << endl; system("pause"); system("cls");	return false; }
-		}
-		else { Excepcion* error = new Excepcion(10); cout << error->toString() << endl; system("pause"); system("cls"); }
-	}
+	
 	while (op1)
 	{
 		system("cls");
@@ -1227,13 +1214,7 @@ bool Interfaz::MMCIingresar(Empresa *e)
 		}
 		else { Excepcion* error = new Excepcion(10); cout << error->toString() << endl; system("pause"); system("cls"); }
 	}
-	//
-	system("cls");
-	cout << "#----------------------------------------------#" << endl;
-	cout << "#                  Mostrando agenda            #" << endl;
-	cout << "#----------------------------------------------#" << endl;
-	MMFAmostrarFecha(e);
-	//
+
 	while (op2)
 	{
 		cout << "#----------------------------------------------#" << endl;
@@ -1262,6 +1243,29 @@ bool Interfaz::MMCIingresar(Empresa *e)
 		}
 		else { Excepcion* error = new Excepcion(10); cout << error->toString() << endl; system("pause"); system("cls"); }
 	}
+
+	//
+	system("cls");
+	cout << "#----------------------------------------------#" << endl;
+	cout << "#                  Mostrando agenda            #" << endl;
+	cout << "#----------------------------------------------#" << endl;
+	system("pause");
+	cout << e->getAgenda()->obtenerAgenda(e->getDoctores()->getID(id2), fecha);
+	//
+	while (agen) {
+		system("cls");
+		cout << "Desea continuar con el ingreso de la cita?  S/N";
+		getline(cin, ingreso);
+		if (ingreso == "N" || ingreso == "n") {
+			return false;
+		}
+		else {
+			if (ingreso == "S" || ingreso == "s") {
+				agen = false;
+			}
+		}
+	}
+
 	while (op3)
 	{
 		cout << "#----------------------------------------------#" << endl;
@@ -1282,6 +1286,21 @@ bool Interfaz::MMCIingresar(Empresa *e)
 				op3 = false;
 			}
 			else { Excepcion* error = new Excepcion(8); cout << error->toString() << endl; system("pause"); system("cls"); }
+		}
+		else { Excepcion* error = new Excepcion(10); cout << error->toString() << endl; system("pause"); system("cls"); }
+	}
+
+	while (op)
+	{
+		system("cls");
+		cout << "#----------------------------------------------#" << endl;
+		cout << "# Digite el Id del Paciente ";
+
+		getline(cin, id);
+		if (soloNumeros(id))
+		{
+			if (e->getPacientes()->existeID(id)) { op = false; }
+			else { Excepcion* error = new Excepcion(5); cout << error->toString() << endl; system("pause"); system("cls");	return false; }
 		}
 		else { Excepcion* error = new Excepcion(10); cout << error->toString() << endl; system("pause"); system("cls"); }
 	}
