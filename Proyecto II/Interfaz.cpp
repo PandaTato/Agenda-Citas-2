@@ -75,13 +75,15 @@ bool Interfaz::MMFingresar(Empresa * e)
 	try
 	{
 		if (e->getCitas()->cantidadElementos() == 0) { throw 3; }
-		else {
+		else 
+		{
 			string id, st, desc, imp;
 			float tot, stt, descc, impp;
 			bool op1 = true;
 			bool op2 = true;
 
-			while (op1) {
+			while (op1) 
+			{
 				system("cls");
 				cout << "----------------------------------" << endl;
 				cout << "Digite el Id de la cita" << endl;
@@ -157,7 +159,21 @@ bool Interfaz::MMFingresar(Empresa * e)
 }
 bool Interfaz::MMFanular(Empresa *e)
 {
-	if (e->getCitas()->cantidadElementos() == 0) { system("cls"); cout << "----------------------------------" << endl << "No hay datos" << endl << "----------------------------------" << endl; system("pause"); return false; }
+	cin.ignore();
+	cin.exceptions(ifstream::failbit | istream::badbit);
+	system("cls");
+	try
+	{
+		if (e->getFacturas()->cantidadElementos() == 0) { throw 4; }
+	}
+	catch (int n)
+	{
+		Excepcion* error = new Excepcion(n);
+		cout << error->toString() << endl;
+		system("pause");
+		return false;
+	}
+
 	bool op1 = true;
 	string id;
 	while (op1) {
@@ -188,6 +204,20 @@ bool Interfaz::MMFanular(Empresa *e)
 }
 bool Interfaz::MMFmostrarid(Empresa * e)
 {
+	cin.ignore();
+	cin.exceptions(ifstream::failbit | istream::badbit);
+	system("cls");
+	try
+	{
+		if (e->getFacturas()->cantidadElementos() == 0) { throw 4; }
+	}
+	catch (int n)
+	{
+		Excepcion* error = new Excepcion(n);
+		cout << error->toString() << endl;
+		system("pause");
+		return false;
+	}
 	bool op1 = true;
 	string id;
 	while (op1) {
@@ -221,16 +251,48 @@ bool Interfaz::MMFmostrarid(Empresa * e)
 }
 bool Interfaz::MMFmostrarPersona(Empresa * e)
 {
-	
+	cin.ignore();
+	cin.exceptions(ifstream::failbit | istream::badbit);
+	system("cls");
+	try
+	{
+		if (e->getFacturas()->cantidadElementos() == 0) { throw 4; }
+	}
+	catch (int n)
+	{
+		Excepcion* error = new Excepcion(n);
+		cout << error->toString() << endl;
+		system("pause");
+		return false;
+	}
+
 	return false;
 }
 bool Interfaz::MMFmostrartodos(Empresa * e)
 {
+	cin.ignore();
+	cin.exceptions(ifstream::failbit | istream::badbit);
+	system("cls");
+	try
+	{
+		if (e->getFacturas()->cantidadElementos() == 0) { throw 4; }
+	}
+	catch (int n)
+	{
+		Excepcion* error = new Excepcion(n);
+		cout << error->toString() << endl;
+		system("pause");
+		return false;
+	}
+
 	system("cls");
 	cout << "#----------------------------------------------#" << endl;
 	cout << "#                  Facturas                    #" << endl;
 	cout << "#----------------------------------------------#" << endl;
 	cout<<e->getFacturas()->toString();
+	cout << "#----------------------------------------------#" << endl;
+	cout << "#               Fin del Contenedor             #" << endl;
+	cout << "#----------------------------------------------#" << endl;
 	system("pause");
 	return false;
 }
@@ -263,79 +325,86 @@ int Interfaz::MMPaciente()
 
 	return opP;
 }
-bool Interfaz::MMPingresar(Empresa * e) //?
+bool Interfaz::MMPingresar(Empresa * e)
 {
-	string nom, ape, tel,numm;
-	bool op = true;
-	bool op1 = true;
-	bool op2 = true;
-
+	cin.ignore();
+	cin.exceptions(ifstream::failbit | istream::badbit);
 	system("cls");
+	try
+	{
+		string nom, ape, tel, numm;
+		bool op = true;
+		bool op1 = true;
+		bool op2 = true;
 
-	while (op) {
-		cout << "#----------------------------------------------#" << endl;
-		cout << "Digite unicamente el nombre: ";
-		cin.ignore();
-		getline(cin, nom);
-		cout << "#----------------------------------------------#" << endl;
-		cout << "Digite el apellido: ";
-		cin.ignore();
-		getline(cin, ape);
-		if (soloLetras(nom)) { op = false; }
-		else { 
-			cout << "-----------------------------------------------" << endl;
-			cout << "		     Solo se permiten letras" << endl;
-			cout << "-----------------------------------------------" << endl;
-			system("pause");
-			system("cls");
-		}
-	}
-	
-	while (op1) {
-		cout << "#----------------------------------------------#" << endl;
-		cout << "Digite el telefono: ";
-		cin.ignore();
-		getline(cin, tel);
-		if (soloNumeros(tel)) { op1 = false; }
-		else{ 
-			cout << "-----------------------------------------------" << endl;
-			cout << "                  No es numero" << endl;
-			cout << "-----------------------------------------------" << endl;
-			system("pause");
-			system("cls");
-		}
-	}
-	while (op2) {
-		cout << "#----------------------------------------------#" << endl;
-		cout << "Digite el ID de la persona: ";
-		cin.ignore();
-		getline(cin, numm);
-		if (soloNumeros(numm)) { 
-			if(e->getPacientes()->existeID(numm)){
-				cout << "-----------------------------------------------" << endl;
-				cout << "                  YA EXISTENTE" << endl;
-				cout << "-----------------------------------------------" << endl;
-				system("pause");
-				system("cls");
-				return false;
-			}
-			op1 = false; 
-		}
-		else { 
-			cout << "-----------------------------------------------" << endl;
-			cout << "                  No es numero" << endl;
-			cout << "-----------------------------------------------" << endl;
+		system("cls");
+
+		while (op)
+		{
+			cout << "#----------------------------------------------#" << endl;
+			cout << "# Digite unicamente el nombre: ";
+			cin.ignore();
+			getline(cin, nom);
+			cout << "#----------------------------------------------#" << endl;
+			cout << "# Digite el apellido: ";
+			cin.ignore();
+			getline(cin, ape);
 			
-			system("pause");
-			system("cls");
+			if (soloLetras(nom)) { op = false; }
+			else { throw(9); }
 		}
+		while (op1) 
+		{
+			cout << "#----------------------------------------------#" << endl;
+			cout << "# Digite el telefono: ";
+			cin.ignore();
+			getline(cin, tel);
+
+			if (soloNumeros(tel)) { op1 = false; }
+			else { throw 10; }
+		}
+		while (op2) {
+			cout << "#----------------------------------------------#" << endl;
+			cout << "# Digite el ID de la persona: ";
+			cin.ignore();
+			getline(cin, numm);
+			if (soloNumeros(numm)) 
+			{
+				if (e->getPacientes()->existeID(numm)) { throw 6; }
+				op1 = true;
+			}
+			else { throw 10; }
+		}
+
+		Paciente* pa = new Paciente(numm, nom, ape, tel);
+		e->getPacientes()->agregarElemento(pa);
+		return true;
 	}
-	Paciente* pa = new Paciente(numm,nom,ape,tel);
-	e->getPacientes()->agregarElemento(pa);
-	return true;
+	catch (int n)
+	{
+		Excepcion* error = new Excepcion(n);
+		cout << error->toString() << endl;
+		system("pause");
+		return false;
+	}
 }
 bool Interfaz::MMPmodificar(Empresa * e)
 {
+	cin.ignore();
+	cin.exceptions(ifstream::failbit | istream::badbit);
+	system("cls");
+	try
+	{
+		if (e->getPacientes()->cantidadElementos() == 0) { throw 1; }
+	}
+	catch (int n)
+	{
+		Excepcion* error = new Excepcion(n);
+		cout << error->toString() << endl;
+		system("pause");
+		return false;
+	}
+
 	bool op = true;
 	bool op1 = true;
 	string id, swt,aux,cambios;
@@ -455,6 +524,21 @@ bool Interfaz::MMPmodificar(Empresa * e)
 }
 bool Interfaz::MMPeliminar(Empresa * e)
 {
+	cin.ignore();
+	cin.exceptions(ifstream::failbit | istream::badbit);
+	system("cls");
+	try
+	{
+		if (e->getPacientes()->cantidadElementos() == 0) { throw 1; }
+	}
+	catch (int n)
+	{
+		Excepcion* error = new Excepcion(n);
+		cout << error->toString() << endl;
+		system("pause");
+		return false;
+	}
+
 	bool op = true;
 	bool op1 = true;
 	bool op2 = true;
@@ -509,6 +593,20 @@ bool Interfaz::MMPeliminar(Empresa * e)
 }
 bool Interfaz::MMPmostrarid(Empresa * e)
 {
+	cin.ignore();
+	cin.exceptions(ifstream::failbit | istream::badbit);
+	system("cls");
+	try
+	{
+		if (e->getPacientes()->cantidadElementos() == 0) { throw 1; }
+	}
+	catch (int n)
+	{
+		Excepcion* error = new Excepcion(n);
+		cout << error->toString() << endl;
+		system("pause");
+		return false;
+	}
 	bool op1 = true;
 	string id;
 	while (op1) {
@@ -540,22 +638,52 @@ bool Interfaz::MMPmostrarid(Empresa * e)
 	}
 	return false;
 }
-bool Interfaz::MMPmostrarPersona(Empresa *)
+bool Interfaz::MMPmostrarPersona(Empresa * e)
 {
+	cin.ignore();
+	cin.exceptions(ifstream::failbit | istream::badbit);
+	system("cls");
+	try
+	{
+		if (e->getPacientes()->cantidadElementos() == 0) { throw 1; }
+	}
+	catch (int n)
+	{
+		Excepcion* error = new Excepcion(n);
+		cout << error->toString() << endl;
+		system("pause");
+		return false;
+	}
 	return false;
-}
+} //hacer
 bool Interfaz::MMPmostrartodos(Empresa * e)
 {
+	cin.ignore();
+	cin.exceptions(ifstream::failbit | istream::badbit);
+	system("cls");
+	try
+	{
+		if (e->getPacientes()->cantidadElementos() == 0) { throw 1; }
+	}
+	catch (int n)
+	{
+		Excepcion* error = new Excepcion(n);
+		cout << error->toString() << endl;
+		system("pause");
+		return false;
+	}
 	system("cls");
 	cout << "#----------------------------------------------#" << endl;
 	cout << "#                  Pacientes                   #" << endl;
 	cout << "#----------------------------------------------#" << endl;
 	cout << e->getPacientes()->toString();
+	cout << "#----------------------------------------------#" << endl;
+	cout << "#               Fin del Contenedor             #" << endl;
+	cout << "#----------------------------------------------#" << endl;
 	system("pause");
 	return true;
 }
 
-//listo? //tal vez falta mostrar id
 int Interfaz::MMDoctor()
 {
 	int opMMP;
@@ -653,14 +781,21 @@ bool Interfaz::MMDingresar(Empresa * e)
 }
 bool Interfaz::MMDmodificar(Empresa * e)
 {
-	if (e->getDoctores()->cantidadElementos() == 0) {
-		system("cls");
-		cout << "#---------------------------------------------------#" << endl;
-		cout << "              No hay doctores registradas" << endl;
-		cout << "#---------------------------------------------------#" << endl;
+	cin.ignore();
+	cin.exceptions(ifstream::failbit | istream::badbit);
+	system("cls");
+	try
+	{
+		if (e->getFacturas()->cantidadElementos() == 0) { throw 2; }
+	}
+	catch (int n)
+	{
+		Excepcion* error = new Excepcion(n);
+		cout << error->toString() << endl;
 		system("pause");
 		return false;
 	}
+
 	bool op = true;
 	bool op1 = true;
 	string id, swt, aux, cambios;
@@ -773,6 +908,21 @@ bool Interfaz::MMDmodificar(Empresa * e)
 }
 bool Interfaz::MMDeliminar(Empresa *e)
 {
+	cin.ignore();
+	cin.exceptions(ifstream::failbit | istream::badbit);
+	system("cls");
+	try
+	{
+		if (e->getFacturas()->cantidadElementos() == 0) { throw 2; }
+	}
+	catch (int n)
+	{
+		Excepcion* error = new Excepcion(n);
+		cout << error->toString() << endl;
+		system("pause");
+		return false;
+	}
+
 	bool op = true;
 	bool op1 = true;
 	bool op2 = true;
@@ -827,6 +977,21 @@ bool Interfaz::MMDeliminar(Empresa *e)
 }
 bool Interfaz::MMDmostrarid(Empresa * e)
 {
+	cin.ignore();
+	cin.exceptions(ifstream::failbit | istream::badbit);
+	system("cls");
+	try
+	{
+		if (e->getFacturas()->cantidadElementos() == 0) { throw 2; }
+	}
+	catch (int n)
+	{
+		Excepcion* error = new Excepcion(n);
+		cout << error->toString() << endl;
+		system("pause");
+		return false;
+	}
+
 	bool op1 = true;
 	string id;
 	while (op1) {
@@ -860,11 +1025,29 @@ bool Interfaz::MMDmostrarid(Empresa * e)
 }
 bool Interfaz::MMDmostrartodos(Empresa * e)
 {
+	cin.ignore();
+	cin.exceptions(ifstream::failbit | istream::badbit);
+	system("cls");
+	try
+	{
+		if (e->getFacturas()->cantidadElementos() == 0) { throw 2; }
+	}
+	catch (int n)
+	{
+		Excepcion* error = new Excepcion(n);
+		cout << error->toString() << endl;
+		system("pause");
+		return false;
+	}
+
 	system("cls");
 	cout << "#----------------------------------------------#" << endl;
 	cout << "#                  Doctores                    #" << endl;
 	cout << "#----------------------------------------------#" << endl;
 	cout << e->getDoctores()->toString();
+	cout << "#----------------------------------------------#" << endl;
+	cout << "#               Fin del Contenedor             #" << endl;
+	cout << "#----------------------------------------------#" << endl;
 	system("pause");
 	return false;
 }
@@ -1047,6 +1230,21 @@ bool Interfaz::MMCIingresar(Empresa *e)
 }
 bool Interfaz::MMCImodificar(Empresa *e)
 {
+	cin.ignore();
+	cin.exceptions(ifstream::failbit | istream::badbit);
+	system("cls");
+	try
+	{
+		if (e->getFacturas()->cantidadElementos() == 0) { throw 3; }
+	}
+	catch (int n)
+	{
+		Excepcion* error = new Excepcion(n);
+		cout << error->toString() << endl;
+		system("pause");
+		return false;
+	}
+
 	bool op = true;
 	bool opi = true;
 	bool ops = true;
@@ -1298,6 +1496,21 @@ bool Interfaz::MMCImodificar(Empresa *e)
 }
 bool Interfaz::MMCIeliminar(Empresa *e)
 {
+	cin.ignore();
+	cin.exceptions(ifstream::failbit | istream::badbit);
+	system("cls");
+	try
+	{
+		if (e->getFacturas()->cantidadElementos() == 0) { throw 3; }
+	}
+	catch (int n)
+	{
+		Excepcion* error = new Excepcion(n);
+		cout << error->toString() << endl;
+		system("pause");
+		return false;
+	}
+
 	bool opp = true;
 	bool op2 = true;
 	string id;
@@ -1358,6 +1571,21 @@ bool Interfaz::MMCIeliminar(Empresa *e)
 }
 bool Interfaz::MMCImostrarid(Empresa * e)
 {
+	cin.ignore();
+	cin.exceptions(ifstream::failbit | istream::badbit);
+	system("cls");
+	try
+	{
+		if (e->getFacturas()->cantidadElementos() == 0) { throw 3; }
+	}
+	catch (int n)
+	{
+		Excepcion* error = new Excepcion(n);
+		cout << error->toString() << endl;
+		system("pause");
+		return false;
+	}
+
 	bool op1 = true;
 	string id;
 	while (op1) {
@@ -1388,22 +1616,53 @@ bool Interfaz::MMCImostrarid(Empresa * e)
 	}
 	return false;
 }
-bool Interfaz::MMFCImostrarPersona(Empresa *)
+bool Interfaz::MMFCImostrarPersona(Empresa * e)
 {
+	cin.ignore();
+	cin.exceptions(ifstream::failbit | istream::badbit);
+	system("cls");
+	try
+	{
+		if (e->getFacturas()->cantidadElementos() == 0) { throw 3; }
+	}
+	catch (int n)
+	{
+		Excepcion* error = new Excepcion(n);
+		cout << error->toString() << endl;
+		system("pause");
+		return false;
+	}
+
 	return false;
 }
 bool Interfaz::MMCImostrartodos(Empresa *e)
 {
+	cin.ignore();
+	cin.exceptions(ifstream::failbit | istream::badbit);
+	system("cls");
+	try
+	{
+		if (e->getFacturas()->cantidadElementos() == 0) { throw 3; }
+	}
+	catch (int n)
+	{
+		Excepcion* error = new Excepcion(n);
+		cout << error->toString() << endl;
+		system("pause");
+		return false;
+	}
 	system("cls");
 	cout << "#----------------------------------------------#" << endl;
 	cout << "#                    Citas                     #" << endl;
 	cout << "#----------------------------------------------#" << endl;
 	cout << e->getCitas()->toString();
 	system("pause");
+	cout << "#----------------------------------------------#" << endl;
+	cout << "#               Fin del Contenedor             #" << endl;
+	cout << "#----------------------------------------------#" << endl;
 	return false;
 }
 
-//listo
 int Interfaz::MMAgenda()
 {
 	int opMMP;

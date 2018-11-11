@@ -43,7 +43,7 @@ int Controladora::controlMenu()
 		do
 		{
 			opcionMFactura = controlMFactura();
-		} while (opcionMFactura != 6);
+		} while (opcionMFactura != 5);
 		break;
 	}
 	case 2:

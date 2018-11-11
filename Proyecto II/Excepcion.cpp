@@ -92,13 +92,30 @@ string Excepcion::Error(int ID)
 		return r.str();
 		break;
 	}
-	
 	case 8: //fecha invalida
 	{
 		stringstream r;
 		r
 			<< "#----------------------------------------------#" << endl
 			<< "#        La Fecha ingresada no es valida       #" << endl;
+		return r.str();
+		break;
+	}
+	case 9: //solo letras
+	{
+		stringstream r;
+		r
+			<< "#----------------------------------------------#" << endl
+			<< "#            Solo se permiten letras           #" << endl;
+		return r.str();
+		break;
+	}
+	case 10: //solo numeros
+	{
+		stringstream r;
+		r
+			<< "#----------------------------------------------#" << endl
+			<< "#             Solo se permiten numeros         #" << endl;
 		return r.str();
 		break;
 	}
