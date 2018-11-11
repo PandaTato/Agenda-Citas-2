@@ -11,7 +11,7 @@
 1
 123456789	Eduardo	Vargas	22601006
 1
-0	Pagado	20	0	13	22.6
+Pagado	0	20	0	13	22.6
 0
 123456789	Eduardo	Vargas	22601006
 117010975	Rodrigo	Castro	88803381
