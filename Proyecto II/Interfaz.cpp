@@ -60,7 +60,7 @@ int Interfaz::MMFactura()
 	cout << "#----------------------------------------------#" << endl;
 	cout << "# 5 | Volver                                   #" << endl;
 	cout << "#----------------------------------------------#" << endl;
-	cout << "# Digite la opcion que desee: " << endl; cin >> opF;
+	cout << "# Digite la opcion que desee: "; cin >> opF;
 	cout << "#----------------------------------------------#" << endl;
 
 	system("pause");
@@ -86,11 +86,13 @@ bool Interfaz::MMFingresar(Empresa * e)
 			{
 				system("cls");
 				cout << "----------------------------------" << endl;
-				cout << "Digite el Id de la cita" << endl;
-				cin.ignore();
+				cout << "Digite el Id de la cita: ";
 				getline(cin, id);
-				if (soloNumeros(id)) {
-					if (e->getCitas()->existeID(id)) { //ver el metodo
+
+				if (soloNumeros(id)) 
+				{
+					if (e->getCitas()->existeID(id))
+					{ //ver el metodo
 						bool find = false;
 						for (int i = 0; i < e->getFacturas()->cantidadElementos(); i++) {
 							if (e->getFacturas()->getElemento(i)->getEstado() != "NULO") {
@@ -108,26 +110,29 @@ bool Interfaz::MMFingresar(Empresa * e)
 			while (op2) {
 				system("cls");
 				cout << "----------------------------------" << endl;
-				cout << "Digite el subtotal: ";
-				cin.ignore();
+				cout << "# Digite el subtotal: ";
 				getline(cin, st);
+
 				cout << "----------------------------------" << endl;
-				cout << endl << "Digite el descuento(0-100): ";
-				cin.ignore();
+				cout << "# Digite el descuento(0-100): ";
 				getline(cin, desc);
+				
 				cout << "----------------------------------" << endl;
-				cout << endl << "Digite el impuesto(Max 20): ";
-				cin.ignore();
+				cout << "# Digite el impuesto(Max 20): ";
 				getline(cin, imp);
-				if (soloNumeros(st) && soloNumeros(desc) && soloNumeros(imp)) {
+
+				if (soloNumeros(st) && soloNumeros(desc) && soloNumeros(imp)) 
+				{
 					stt = convertirFloat(st);
 					descc = convertirFloat(desc);
 					impp = convertirFloat(imp);
 
-					if (stt > 0 && descc >= 0 && descc < 101 && impp > 0 && impp < 20) { //descuento maximo 100%, impuesto maximo 20%
+					if (stt > 0 && descc >= 0 && descc < 101 && impp > 0 && impp < 20) 
+					{ //descuento maximo 100%, impuesto maximo 20%
 						op2 = false;
 					}
-					else {
+					else 
+					{
 						cout << "##########----------------------------------" << endl;
 						cout << "              Valores erroneos" << endl;
 						cout << "##########----------------------------------" << endl;
@@ -135,7 +140,8 @@ bool Interfaz::MMFingresar(Empresa * e)
 					}
 
 				}
-				else {
+				else
+				{
 					cout << "##########----------------------------------" << endl;
 					cout << "              Valores erroneos" << endl;
 					cout << "##########----------------------------------" << endl;
@@ -146,6 +152,12 @@ bool Interfaz::MMFingresar(Empresa * e)
 			tot = (aux + ((aux / 100) * impp));
 			Factura* ff = new Factura(stt, descc, impp, tot, e->getCitas()->getID(id));
 			e->getFacturas()->agregarElemento(ff);
+
+			cout << "#----------------------------------------------#" << endl;
+			cout << "#               Factura Ingresado              #" << endl;
+			cout << "#----------------------------------------------#" << endl;
+			system("pause");
+
 			return true;
 		}
 	}
@@ -788,7 +800,7 @@ bool Interfaz::MMDingresar(Empresa * e)
 	e->getDoctores()->agregarElemento(pa);
 
 	cout << "#----------------------------------------------#" << endl;
-	cout << "#              Paciente Ingresado              #" << endl;
+	cout << "#               Doctor Ingresado               #" << endl;
 	cout << "#----------------------------------------------#" << endl;
 	system("pause");
 
@@ -1220,7 +1232,6 @@ bool Interfaz::MMCIingresar(Empresa *e)
 	cout << "#----------------------------------------------#" << endl;
 	cout << "#                  Mostrando agenda            #" << endl;
 	cout << "#----------------------------------------------#" << endl;
-	system("pause");
 	MMFAmostrarFecha(e);
 	//
 	while (op2)
@@ -1683,6 +1694,10 @@ int Interfaz::MMAgenda()
 }
 bool Interfaz::MMFAmostrarFecha(Empresa * e)
 {
+	cin.ignore();
+	cin.exceptions(ifstream::failbit | istream::badbit);
+	system("cls");
+
 	bool op = true;
 	bool op1 = true;
 	string id,dd,mm,aa;
@@ -1691,16 +1706,15 @@ bool Interfaz::MMFAmostrarFecha(Empresa * e)
 	while (op) 
 	{
 		cout << "#----------------------------------------------#" << endl;
-		cout << "# Digite el dia: " << endl;
-	
+		cout << "# Digite el dia: ";
 		getline(cin, dd);
+
 		cout << "#----------------------------------------------#" << endl;
-		cout << "# Digite el mes: " << endl;
-		
+		cout << "# Digite el mes: ";
 		getline(cin, mm);
+
 		cout << "#----------------------------------------------#" << endl;
-		cout << "# Digite el anio: " << endl;
-		
+		cout << "# Digite el anio: ";
 		getline(cin, aa);
 
 		if (soloNumeros(dd) && soloNumeros(mm) && soloNumeros(aa)) 
@@ -1708,13 +1722,14 @@ bool Interfaz::MMFAmostrarFecha(Empresa * e)
 			int a = convertirInt(aa);
 			int m = convertirInt(mm);
 			int d = convertirInt(dd);
-			if (Fecha::validarFecha(a, m, d)) {
+			if (Fecha::validarFecha(a, m, d))
+			{
 				fecha = new Fecha(a, m, d,Fecha::getWeekDay(a,m,d));
 				op = false;
 			}
 			else {
 				cout << "#----------------------------------------------#" << endl;
-				cout << "         Valores no validos para fecha" << endl;
+				cout << "#         Valores no validos para fecha        #" << endl;
 				cout << "#----------------------------------------------#" << endl;
 				system("pause");
 				system("cls");
@@ -1728,6 +1743,7 @@ bool Interfaz::MMFAmostrarFecha(Empresa * e)
 		cout << "#----------------------------------------------#" << endl;
 		cout << "# Digite el Id del doctor ";
 		getline(cin, id);
+		
 		cout << "#----------------------------------------------#" << endl;
 		if (soloNumeros(id))
 		{
@@ -1741,9 +1757,9 @@ bool Interfaz::MMFAmostrarFecha(Empresa * e)
 			else 
 			{
 				system("cls");
-				cout << "-----------------------------------------------" << endl;
-				cout << "|                   No existe                 |" << endl;
-				cout << "-----------------------------------------------" << endl;
+				cout << "#----------------------------------------------#" << endl;
+				cout << "#                   No existe                  #" << endl;
+				cout << "#----------------------------------------------#" << endl;
 				system("pause");
 				return false;
 			}
@@ -1753,17 +1769,24 @@ bool Interfaz::MMFAmostrarFecha(Empresa * e)
 }
 bool Interfaz::MMFAmostrarHoy(Empresa *e)
 {
+	cin.ignore();
+	cin.exceptions(ifstream::failbit | istream::badbit);
+	system("cls");
+
 	Fecha * fecha = new Fecha();
 	bool op1 = true;
 	string id;
-	while (op1) {
+
+	while (op1) 
+	{
 		system("cls");
 		cout << "#----------------------------------------------#" << endl;
-		cout << "# Digite el Id del doctor" << endl;
-		
+		cout << "# Digite el Id del doctor: ";		
 		getline(cin, id);
+
 		cout << "#----------------------------------------------#" << endl;
-		if (soloNumeros(id)) {
+		if (soloNumeros(id))
+		{
 			if (e->getDoctores()->existeID(id)) 
 			{ //ver el metodo
 				system("cls");
@@ -1774,9 +1797,9 @@ bool Interfaz::MMFAmostrarHoy(Empresa *e)
 			else 
 			{
 				system("cls");
-				cout << "-----------------------------------------------" << endl;
-				cout << "|                   No existe                 |" << endl;
-				cout << "-----------------------------------------------" << endl;
+				cout << "#----------------------------------------------#" << endl;
+				cout << "#                   No existe                  #" << endl;
+				cout << "#----------------------------------------------#" << endl;
 				system("pause");
 				return false;
 			}

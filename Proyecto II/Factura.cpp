@@ -4,7 +4,7 @@ int ID = 0;
 
 Factura::Factura()
 {
-	this->id = "0";
+	this->id = static_cast<std::ostringstream*>(&(std::ostringstream() << ID++))->str();
 
 	this->agenda = NULL;
 
@@ -60,7 +60,7 @@ string Factura::toString()
 
 	r
 		<< "# Numero de Factura | " << id << endl
-		<< "# Estado de Factura | " <<estado<<endl
+		<< "# Estado de Factura | " << estado <<endl
 		<< "# Servicios Medicos | " << subTotal << endl
 		<< "# Descuento         | " << descuento <<"%"<< endl
 		<< "# Impuesto de Venta | " << impuestoVenta<<"%" << endl

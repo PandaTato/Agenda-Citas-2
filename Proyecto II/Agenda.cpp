@@ -31,26 +31,33 @@ string Agenda::obtenerAgenda(Doctor * doc, Fecha *fech)
 	maux = fech->getMes();
 	daux = fech->getDia() - fech->getwday() + 1; //con esto me seteo en el domingo de esa semana
 
-	if (fech->getDia() >= 7) {
-		for (int i = 0; i < 7; i++) {
+	if (fech->getDia() >= 7) 
+	{
+		for (int i = 0; i < 7; i++) 
+		{
 			Nodo<Cita>* actual = citas->primerElemento();
 			s
 				<< "--------------------------------------" << endl
 				<< Dsem[i] << endl
 				<< "--------------------------------------" << endl;
-			while (actual != NULL) {
-				if (actual->getElemento()->getDoctor()->getID() == doc->getID()) {
+			while (actual != NULL)
+			{
+				if (actual->getElemento()->getDoctor()->getID() == doc->getID()) 
+				{
 					int yy = actual->getElemento()->getFecha()->getAnnio();
 					int mm = actual->getElemento()->getFecha()->getMes();
 					int dd = actual->getElemento()->getFecha()->getDia();
-					if (yy == yaux && mm == maux && dd == daux) {
+					if (yy == yaux && mm == maux && dd == daux)
+					{
 						s << actual->getElemento();
 					}
-					else {
+					else
+					{
 						actual = actual->getSiguiente();
 					}
 				}
-				else {
+				else 
+				{
 					actual = actual->getSiguiente();
 				}
 			}
@@ -58,9 +65,12 @@ string Agenda::obtenerAgenda(Doctor * doc, Fecha *fech)
 		}
 
 	}
-	else {
-		if (daux<1) {
-			if (maux == 1) { //enero
+	else 
+	{
+		if (daux<1) 
+		{
+			if (maux == 1)
+			{ //enero
 				int yaux2 = yaux - 1;
 				int maux2 = 12;
 				int daux2 = 31 + daux; //daux es negativo
@@ -71,102 +81,127 @@ string Agenda::obtenerAgenda(Doctor * doc, Fecha *fech)
 						<< "--------------------------------------" << endl
 						<< Dsem[i] << endl
 						<< "--------------------------------------" << endl;
-					while (actual != NULL) {
-						if (actual->getElemento()->getDoctor()->getID() == doc->getID()) {
+					while (actual != NULL)
+					{
+						if (actual->getElemento()->getDoctor()->getID() == doc->getID())
+						{
 							int yy = actual->getElemento()->getFecha()->getAnnio();
 							int mm = actual->getElemento()->getFecha()->getMes();
 							int dd = actual->getElemento()->getFecha()->getDia();
-							if (yy == yaux2 && mm == maux2 && dd == daux2) {
+							if (yy == yaux2 && mm == maux2 && dd == daux2) 
+							{
 								s << actual->getElemento();
 							}
-							else {
+							else 
+							{
 								actual = actual->getSiguiente();
 							}
 						}
-						else {
+						else
+						{
 							actual = actual->getSiguiente();
 						}
 					}
 					daux2++;
 				}
-				for (int i = 1; i <= fech->getDia(); i++) {
+				for (int i = 1; i <= fech->getDia(); i++) 
+				{
 					Nodo<Cita>* actual = citas->primerElemento();
 					s
 						<< "--------------------------------------" << endl
 						<< Dsem[i + j - 1] << endl
 						<< "--------------------------------------" << endl;
-					while (actual != NULL) {
-						if (actual->getElemento()->getDoctor()->getID() == doc->getID()) {
+					while (actual != NULL) 
+					{
+						if (actual->getElemento()->getDoctor()->getID() == doc->getID()) 
+						{
 							int yy = actual->getElemento()->getFecha()->getAnnio();
 							int mm = actual->getElemento()->getFecha()->getMes();
 							int dd = actual->getElemento()->getFecha()->getDia();
-							if (yy == yaux && mm == maux && dd == i) {
+							if (yy == yaux && mm == maux && dd == i)
+							{
 								s << actual->getElemento();
 							}
-							else {
+							else
+							{
 								actual = actual->getSiguiente();
 							}
 						}
-						else {
+						else 
+						{
 							actual = actual->getSiguiente();
 						}
 					}
 				}
 			}
-			else {
+			else			
+			{
 				int maux2 = maux - 1;
 				int daux2 = 0;
-				if (maux2 == 1 || maux2 == 3 || maux2 == 5 || maux2 == 7 || maux2 == 8 || maux2 == 10 || maux2 == 12) {
+				if (maux2 == 1 || maux2 == 3 || maux2 == 5 || maux2 == 7 || maux2 == 8 || maux2 == 10 || maux2 == 12)
+				{
 					daux2 = 31 + daux; //daux es negativo
 				}
-				else {
-					if (maux2 == 2) {
+				else
+				{
+					if (maux2 == 2) 
+					{
 						daux2 = 28 + daux;
 					}
-					else {
+					else
+					{
 						daux2 = 30 + daux;
 					}
 				}
 				int j = (daux * -1) + 1;
-				for (int i = 0; i < j; i++) {
+				for (int i = 0; i < j; i++)
+				{
 					Nodo<Cita>* actual = citas->primerElemento();
 					s
 						<< "--------------------------------------" << endl
 						<< Dsem[i] << endl
 						<< "--------------------------------------" << endl;
 					while (actual != NULL) {
-						if (actual->getElemento()->getDoctor()->getID() == doc->getID()) {
+						if (actual->getElemento()->getDoctor()->getID() == doc->getID())
+						{
 							int yy = actual->getElemento()->getFecha()->getAnnio();
 							int mm = actual->getElemento()->getFecha()->getMes();
 							int dd = actual->getElemento()->getFecha()->getDia();
-							if (yy == yaux && mm == maux2 && dd == daux2) {
+							if (yy == yaux && mm == maux2 && dd == daux2)
+							{
 								s << actual->getElemento();
 							}
-							else {
+							else
+							{
 								actual = actual->getSiguiente();
 							}
 						}
-						else {
+						else 						
+						{
 							actual = actual->getSiguiente();
 						}
 					}
 					daux2++;
 				}
-				for (int i = 1; i <= fech->getDia(); i++) {
+				for (int i = 1; i <= fech->getDia(); i++)
+				{
 					s
 						<< "--------------------------------------" << endl
 						<< Dsem[i + j - 1] << endl
 						<< "--------------------------------------" << endl;
 					Nodo<Cita>* actual = citas->primerElemento();
 					while (actual != NULL) {
-						if (actual->getElemento()->getDoctor()->getID() == doc->getID()) {
+						if (actual->getElemento()->getDoctor()->getID() == doc->getID())
+						{
 							int yy = actual->getElemento()->getFecha()->getAnnio();
 							int mm = actual->getElemento()->getFecha()->getMes();
 							int dd = actual->getElemento()->getFecha()->getDia();
-							if (yy == yaux && mm == maux && dd == i) {
+							if (yy == yaux && mm == maux && dd == i) 
+							{
 								s << actual->getElemento();
 							}
-							else {
+							else 
+							{
 								actual = actual->getSiguiente();
 							}
 						}
@@ -177,26 +212,33 @@ string Agenda::obtenerAgenda(Doctor * doc, Fecha *fech)
 				}
 			}
 		}
-		else {
-			for (int i = 0; i < 7; i++) {
+		else
+		{
+			for (int i = 0; i < 7; i++) 
+			{
 				Nodo<Cita>* actual = citas->primerElemento();
 				s
 					<< "--------------------------------------" << endl
 					<< Dsem[i] << endl
 					<< "--------------------------------------" << endl;
-				while (actual != NULL) {
-					if (actual->getElemento()->getDoctor()->getID() == doc->getID()) {
+				while (actual != NULL)
+				{
+					if (actual->getElemento()->getDoctor()->getID() == doc->getID())
+					{
 						int yy = actual->getElemento()->getFecha()->getAnnio();
 						int mm = actual->getElemento()->getFecha()->getMes();
 						int dd = actual->getElemento()->getFecha()->getDia();
-						if (yy == yaux && mm == maux && dd == daux) {
+						if (yy == yaux && mm == maux && dd == daux) 
+						{
 							s << actual->getElemento();
 						}
-						else {
+						else 
+						{
 							actual = actual->getSiguiente();
 						}
 					}
-					else {
+					else 
+					{
 						actual = actual->getSiguiente();
 					}
 				}
