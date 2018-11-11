@@ -1215,6 +1215,14 @@ bool Interfaz::MMCIingresar(Empresa *e)
 		}
 		else { Excepcion* error = new Excepcion(10); cout << error->toString() << endl; system("pause"); system("cls"); }
 	}
+	//
+	system("cls");
+	cout << "-----------------------------------------------" << endl;
+	cout << "                  Mostrando agenda" << endl;
+	cout << "-----------------------------------------------" << endl;
+	system("pause");
+	MMFAmostrarFecha(e);
+	//
 	while (op2)
 	{
 		cout << "#----------------------------------------------#" << endl;
