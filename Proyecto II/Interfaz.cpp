@@ -1041,7 +1041,7 @@ bool Interfaz::MMCImodificar(Empresa *e)
 	string id,swt,cambios,idd,dd,mm,aa,hh,mimi;
 	Fecha* fecha = NULL;
 	Hora* hora = NULL;
-
+	
 	if (e->getCitas()->cantidadElementos() == 0) {
 		system("cls");
 		cout << "#---------------------------------------------------#" << endl;
