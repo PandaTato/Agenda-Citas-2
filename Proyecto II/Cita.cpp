@@ -13,7 +13,7 @@ Cita::Cita()
 }
 Cita::Cita(Doctor * pDoctor, Paciente * pPaciente, Fecha * pFecha, Hora * pHora)
 {
-	this->id = codigo++;
+	this->id = static_cast<std::ostringstream*>(&(std::ostringstream() << codigo++))->str();
 
 	this->doctor = pDoctor;
 	this->paciente = pPaciente;
@@ -32,7 +32,7 @@ Cita::Cita(string pID, Doctor * pDoctor, Paciente * pPaciente, Fecha * pFecha, H
 
 Cita::~Cita(){}
 
-string Cita::getID(){	return id;}
+string Cita::getID() { return id; }
 Doctor * Cita::getDoctor(){	return doctor;}
 Paciente * Cita::getPaciente() { return paciente; }
 Fecha * Cita::getFecha() { return fecha; }

@@ -52,7 +52,7 @@ string Excepcion::Error(int ID)
 		stringstream r;
 		r
 			<< "#----------------------------------------------#" << endl
-			<< "#     No se encuentran citass registradas      #" << endl;
+			<< "#     No se encuentran citas registradas       #" << endl;
 		return r.str();
 		break;
 	}

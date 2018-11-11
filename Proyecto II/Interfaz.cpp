@@ -1217,9 +1217,9 @@ bool Interfaz::MMCIingresar(Empresa *e)
 	}
 	//
 	system("cls");
-	cout << "-----------------------------------------------" << endl;
-	cout << "                  Mostrando agenda" << endl;
-	cout << "-----------------------------------------------" << endl;
+	cout << "#----------------------------------------------#" << endl;
+	cout << "#                  Mostrando agenda            #" << endl;
+	cout << "#----------------------------------------------#" << endl;
 	system("pause");
 	MMFAmostrarFecha(e);
 	//
@@ -1278,6 +1278,11 @@ bool Interfaz::MMCIingresar(Empresa *e)
 
 	Cita *cit = new Cita(e->getDoctores()->getID(id2), e->getPacientes()->getID(id), fecha, hora);
 	e->getCitas()->agregarElemento(cit);
+
+	cout << "#----------------------------------------------#" << endl;
+	cout << "#               Cita Registrada                #" << endl;
+	cout << "#----------------------------------------------#" << endl;
+	system("pause");
 
 	return true;
 }
@@ -1644,11 +1649,13 @@ bool Interfaz::MMCImostrartodos(Empresa *e)
 	cout << "#----------------------------------------------#" << endl;
 	cout << "#                    Citas                     #" << endl;
 	cout << "#----------------------------------------------#" << endl;
+	
 	cout << e->getCitas()->toString();
-	system("pause");
+	
 	cout << "#----------------------------------------------#" << endl;
 	cout << "#               Fin del Contenedor             #" << endl;
 	cout << "#----------------------------------------------#" << endl;
+	system("pause");
 	return false;
 }
 
@@ -1681,7 +1688,8 @@ bool Interfaz::MMFAmostrarFecha(Empresa * e)
 	string id,dd,mm,aa;
 	Fecha *fecha=NULL;
 
-	while (op) {
+	while (op) 
+	{
 		cout << "#----------------------------------------------#" << endl;
 		cout << "# Digite el dia: " << endl;
 	
@@ -1695,7 +1703,8 @@ bool Interfaz::MMFAmostrarFecha(Empresa * e)
 		
 		getline(cin, aa);
 
-		if (soloNumeros(dd) && soloNumeros(mm) && soloNumeros(aa)) {
+		if (soloNumeros(dd) && soloNumeros(mm) && soloNumeros(aa)) 
+		{
 			int a = convertirInt(aa);
 			int m = convertirInt(mm);
 			int d = convertirInt(dd);
