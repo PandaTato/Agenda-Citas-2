@@ -610,6 +610,8 @@ bool Interfaz::MMPmostrarid(Empresa * e)
 	}
 
 	bool op1 = true;
+	bool citss = true;
+	bool factss = true;
 	string id;
 	while (op1) {
 		system("cls");
@@ -630,7 +632,79 @@ bool Interfaz::MMPmostrarid(Empresa * e)
 		}
 		else { Excepcion* error = new Excepcion(9); cout << error->toString() << endl; system("pause"); system("cls"); }
 	}
+	while (citss)
+	{
+		string ver;
+		system("cls");
+		cout << "#----------------------------------------------#" << endl;
+		cout << "# Quiere ver todas las citas? S/N";
+		getline(cin, ver);
+		cout << endl;
+		cout << "#----------------------------------------------#" << endl;
+
+		if (ver == "N" || ver == "n") {
+			citss = false;
+			system("cls");
+		}
+		else {
+			if (ver == "S" || ver == "s") {
+				if (e->getCitas()->cantidadElementos() == 0) {
+					/*EXCEPION*/
+					system("pause"); system("cls");
+					citss = false;
+				}
+				else {
+					for (int i = 0; i < e->getCitas()->cantidadElementos(); i++) {
+						if (e->getCitas()->getID(convertirString(i))->getPaciente()->getID() == e->getPacientes()->getID(id)->getID()) {
+							cout<<e->getCitas()->getID(convertirString(i))->toString();
+						}
+					}
+				}
+			}
+			else {
+				/*EXCEPION*/
+				system("pause"); system("cls");
+			}
+		}
+
+	}
+	while (factss)
+	{
+		string ver;
+		system("cls");
+		cout << "#----------------------------------------------#" << endl;
+		cout << "# Quiere ver todas las facturas? S/N";
+		getline(cin, ver);
+		cout << endl;
+		cout << "#----------------------------------------------#" << endl;
+
+		if (ver == "N" || ver == "n") {
+			factss = false;
+			system("cls");
+		}
+		else {
+			if (ver == "S" || ver == "s") {
+				if (e->getFacturas()->cantidadElementos() == 0) {
+					/*EXCEPION*/
+					system("pause"); system("cls");
+					factss = false;
+				}
+				else {
+					for (int i = 0; i < e->getFacturas()->cantidadElementos(); i++) {
+						if (e->getFacturas()->getID(convertirString(i))->getAgenda()->getPaciente()->getID() == e->getPacientes()->getID(id)->getID()) {
+							cout << e->getFacturas()->getID(convertirString(i))->toString();
+						}
+					}
+				}
+			}
+			else {
+				/*EXCEPION*/
+				system("pause"); system("cls");
+			}
+		}
+	}
 	return false;
+
 }
 bool Interfaz::MMPmostrarPersona(Empresa * e)
 {
