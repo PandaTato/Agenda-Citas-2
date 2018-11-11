@@ -1034,6 +1034,14 @@ bool Interfaz::MMCIingresar(Empresa *e)
 }
 bool Interfaz::MMCImodificar(Empresa *e)
 {
+	bool op = true;
+	bool opi = true;
+	bool ops = true;
+	bool opt = true;
+	string id,swt,cambios,idd,dd,mm,aa,hh,mimi;
+	Fecha* fecha = NULL;
+	Hora* hora = NULL;
+
 	if (e->getCitas()->cantidadElementos() == 0) {
 		system("cls");
 		cout << "#---------------------------------------------------#" << endl;
@@ -1041,6 +1049,236 @@ bool Interfaz::MMCImodificar(Empresa *e)
 		cout << "#---------------------------------------------------#" << endl;
 		system("pause");
 		return false;
+	}
+	while (op) {
+		system("cls");
+		cout << "--------------------------------------" << endl;
+		cout << "Digite el Id de la Cita " << endl;
+		getline(cin, id);
+		if (soloNumeros(id)) {
+			if (e->getCitas()->existeID(id)) { //ver el metodo
+				op = false;
+			}
+			else {
+				cout << "-----------------------------------------------" << endl;
+				cout << "|                   No existe                 |" << endl;
+				cout << "-----------------------------------------------" << endl;
+				system("pause");
+				return false;
+			}
+		}
+		else {
+			system("cls");
+			cout << "-----------------------------------------------" << endl;
+			cout << "                  No es numero" << endl;
+			cout << "-----------------------------------------------" << endl;
+			system("pause");
+		}
+	}
+	//
+	for (int i = 0; i < e->getFacturas()->cantidadElementos(); i++) {
+		if (e->getFacturas()->getID(convertirString(i))->getAgenda()->getID() == e->getCitas()->getID(id)->getID()) {
+			ops = false;
+		}
+	}
+
+	if (!ops) {
+		system("cls");
+		cout << "-----------------------------------------------" << endl;
+		cout << "             No es posible modificarlo ya " << endl;
+		cout << "          que ya fue incluido en una factura." << endl;
+		cout << "-----------------------------------------------" << endl;
+		system("pause");
+		return false;
+	}
+	//
+	while (opi) {
+		system("cls");
+		cout << "-----------------------------------------------" << endl;
+		cout << "Que desea cambiar?" << endl;
+		cout << "1 Paciente" << endl;
+		cout << "2 Doctor" << endl;
+		cout << "3 Fecha" << endl;
+		cout << "4 Hora" << endl;
+		cout << "5 SALIR AL MENU" << endl;
+		cout << "Digite el numero: ";
+		getline(cin, swt);
+
+		if (soloNumeros(swt)) {
+			int swtt = convertirInt(swt);
+			if (swtt > 0 && swtt < 6) {
+				switch (swtt)
+				{
+				case 1:
+					system("cls");
+					while (opt) {
+						system("cls");
+						cout << "--------------------------------------" << endl;
+						cout << "Digite el Id del Paciente " << endl;
+						cin.ignore();
+						getline(cin, idd);
+						if (soloNumeros(idd)) {
+							if (e->getPacientes()->existeID(idd)) { //ver el metodo
+								opt = false;
+								e->getCitas()->getID(id)->setPaciente(e->getPacientes()->getID(idd));
+							}
+							else {
+								cout << "-----------------------------------------------" << endl;
+								cout << "|                   No existe                 |" << endl;
+								cout << "-----------------------------------------------" << endl;
+								system("pause");
+								return false;
+							}
+						}
+						else {
+							system("cls");
+							cout << "-----------------------------------------------" << endl;
+							cout << "                  No es numero" << endl;
+							cout << "-----------------------------------------------" << endl;
+							system("pause");
+						}
+					}
+
+					break;
+				case 2:
+					system("cls");
+					while (opt) {
+						system("cls");
+						cout << "--------------------------------------" << endl;
+						cout << "Digite el Id del Doctor " << endl;
+						cin.ignore();
+						getline(cin, idd);
+						if (soloNumeros(idd)) {
+							if (e->getDoctores()->existeID(idd)) { //ver el metodo
+								opt = false;
+								e->getCitas()->getID(id)->setDoctor(e->getDoctores()->getID(idd));
+							}
+							else {
+								cout << "-----------------------------------------------" << endl;
+								cout << "|                   No existe                 |" << endl;
+								cout << "-----------------------------------------------" << endl;
+								system("pause");
+								return false;
+							}
+						}
+						else {
+							system("cls");
+							cout << "-----------------------------------------------" << endl;
+							cout << "                  No es numero" << endl;
+							cout << "-----------------------------------------------" << endl;
+							system("pause");
+						}
+					}
+					break;
+				case 3:
+					system("cls");
+					while (opt) {
+						cout << "-----------------------------------------------" << endl;
+						cout << "Digite el dia: " << endl;
+						cin.ignore();
+						getline(cin, dd);
+						cout << "-----------------------------------------------" << endl;
+						cout << "Digite el mes: " << endl;
+						cin.ignore();
+						getline(cin, mm);
+						cout << "-----------------------------------------------" << endl;
+						cout << "Digite el anio: " << endl;
+						cin.ignore();
+						getline(cin, aa);
+
+						if (soloNumeros(dd) && soloNumeros(mm) && soloNumeros(aa)) {
+							int a = convertirInt(aa);
+							int m = convertirInt(mm);
+							int d = convertirInt(dd);
+							if (Fecha::validarFecha(a, m, d)) {
+								fecha = new Fecha(a, m, d, Fecha::getWeekDay(a, m, d));
+								opt = false;
+								e->getCitas()->getID(id)->setFecha(fecha);
+							}
+							else {
+								cout << "-----------------------------------------------" << endl;
+								cout << "         Valores no validos para fecha" << endl;
+								cout << "-----------------------------------------------" << endl;
+								system("pause");
+								system("cls");
+							}
+						}
+						else {
+							cout << "-----------------------------------------------" << endl;
+							cout << "            Solo se aceptan numeros" << endl;
+							cout << "-----------------------------------------------" << endl;
+							system("pause");
+							system("cls");
+						}
+					}
+					break;
+				case 4:
+					system("cls");
+					while (opt) {
+						cout << "-----------------------------------------------" << endl;
+						cout << "Digite la hora(7-16): " << endl;
+						cin.ignore();
+						getline(cin, hh);
+						cout << "-----------------------------------------------" << endl;
+						cout << "Digite los minutos(0-50): " << endl;
+						cin.ignore();
+						getline(cin, mimi);
+
+						if (soloNumeros(hh) && soloNumeros(mimi)) {
+							int mi = convertirInt(mimi);
+							int h = convertirInt(hh);
+							if (mi < 51 && mi >= 0 && h>6 && h < 17) {  //empieza a las 7, termina a las 4
+								hora = new Hora(h, mi);
+								opt = false;
+								e->getCitas()->getID(id)->setHora(hora);
+							}
+							else {
+								cout << "-----------------------------------------------" << endl;
+								cout << "         Valores no validos para hora" << endl;
+								cout << "-----------------------------------------------" << endl;
+								system("pause");
+								system("cls");
+							}
+						}
+						else {
+							cout << "-----------------------------------------------" << endl;
+							cout << "            Solo se aceptan numeros" << endl;
+							cout << "-----------------------------------------------" << endl;
+							system("pause");
+							system("cls");
+						}
+					}
+					break;
+				case 5:
+					system("cls");
+					return false;
+					break;
+				default:
+					break;
+				}
+				cout << "-----------------------------------------------" << endl;
+				cout << "Desea hacer mas cambios en esta cita? S/N ";
+				getline(cin, cambios);
+				if (cambios == "N" || cambios == "n") {
+					opi = false;
+				}
+			}
+			else {
+
+				cout << "-----------------------------------------------" << endl;
+				cout << "                 Numero no valido" << endl;
+				cout << "-----------------------------------------------" << endl;
+				system("pause");
+				system("cls");
+			}
+		}
+		else {
+			system("cls");
+			cout << "-----------------------------------------------" << endl;
+			cout << "                  No es numero" << endl;
+			cout << "-----------------------------------------------" << endl;
+			system("pause");
+		}
 	}
 
 	return true;
