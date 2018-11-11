@@ -59,12 +59,21 @@ string Factura::toString()
 	stringstream r;
 
 	r
+		<< "#---------------------------------------------#" << endl
+		<< "#                    Factura                  #" << endl
+		<< "#---------------------------------------------#" << endl
 		<< "# Numero de Factura | " << id << endl
+		<< "#---------------------------------------------#" << endl
 		<< "# Estado de Factura | " << estado <<endl
+		<< "#---------------------------------------------#" << endl
 		<< "# Servicios Medicos | " << subTotal << endl
+		<< "#---------------------------------------------#" << endl
 		<< "# Descuento         | " << descuento <<"%"<< endl
+		<< "#---------------------------------------------#" << endl
 		<< "# Impuesto de Venta | " << impuestoVenta<<"%" << endl
+		<< "#---------------------------------------------#" << endl
 		<< "# Total             | " << total << endl
+		<< "#---------------------------------------------#" << endl
 		<< endl;
 
 	return r.str();
@@ -102,6 +111,6 @@ Factura * Factura::leer(ifstream & entrada)
 	pTotal1 = convertirFloat(pTotal);
 
 
-	Factura* nFactura = new Factura(pID, pEstado, pSubTotal1, pDescuento1, pImpuestoVenta1, pTotal1, pAgenda);
+	Factura* nFactura = new Factura(pEstado, pID, pSubTotal1, pDescuento1, pImpuestoVenta1, pTotal1, pAgenda);
 	return nFactura;
 }

@@ -1058,7 +1058,8 @@ bool Interfaz::MMDmostrarid(Empresa * e)
 		}
 		else {
 			if (ver == "S" || ver == "s") {
-				if (e->getCitas()->cantidadElementos() == 0) {
+				if (e->getCitas()->cantidadElementos() == 0) 
+				{
 					/*EXCEPION*/
 					system("pause"); system("cls");
 					pass = false;
