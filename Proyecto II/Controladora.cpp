@@ -100,9 +100,8 @@ int Controladora::controlMFactura()
 	case 1: Interfaz::MMFingresar(empresa); break;
 	case 2: Interfaz::MMFanular(empresa); break;
 	case 3: Interfaz::MMFmostrarid(empresa); break;
-	case 4: Interfaz::MMFmostrarPersona(empresa); break;
-	case 5: Interfaz::MMFmostrartodos(empresa); break;
-	case 6: system("cls"); break;
+	case 4: Interfaz::MMFmostrartodos(empresa); break;
+	case 5: system("cls"); break;
 	}
 
 	return opccionMMR;

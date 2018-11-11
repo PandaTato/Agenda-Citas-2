@@ -26,14 +26,12 @@ string Doctor::toString()
 }
 
 void Doctor::guardar(ofstream & salida)
-
 {
 	salida << id << '\t';
 	salida << nombre << '\t';
 	salida << apellido << '\t';
 	salida << telefono << '\t';
 }
-
 
 Doctor * Doctor::leer(ifstream & entrada)
 {

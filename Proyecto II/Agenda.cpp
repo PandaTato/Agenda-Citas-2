@@ -209,7 +209,6 @@ string Agenda::obtenerAgenda(Doctor * doc, Fecha *fech)
 }
 
 void Agenda::guardar(ofstream & salida) { citas->guardar(salida); }
-
 Agenda* Agenda::leer(ifstream & entrada)
 {
 	Lista<Cita>* ptrLista = Lista<Cita>::leer(entrada);

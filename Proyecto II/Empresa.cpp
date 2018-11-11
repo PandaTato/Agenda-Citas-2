@@ -3,54 +3,72 @@
 Empresa::Empresa(string a)
 {
 	nombre = a;
-	cits = new Lista<Cita>();
-	ag = new Agenda(cits);
-	pa = new Lista<Paciente>();
-	doc = new Lista<Doctor>();
-	fac = new Lista<Factura>();
+	cita = new Lista<Cita>();
+	agenda = new Agenda(cita);
+	paciente = new Lista<Paciente>();
+	doctor = new Lista<Doctor>();
+	factura = new Lista<Factura>();
 }
 
-Empresa::~Empresa()
+Empresa::Empresa(string pNombre, Agenda * pAgenda, Lista<Cita>* pCita, Lista<Paciente>* pPaciente, Lista<Doctor>* pDoctor, Lista<Factura>* pFactura)
 {
+	nombre = pNombre;
+
+	cita = pCita;
+	agenda = pAgenda;
+	paciente = pPaciente;
+	doctor = pDoctor;
+	factura = pFactura;
 }
 
-string Empresa::setNombre() { return nombre; }
+Empresa::~Empresa(){}
+
+void Empresa::setNombre(string pNombre) { this->nombre = pNombre; }
+void Empresa::setAgenda(Agenda * pAgenda) { this->agenda = pAgenda; }
+
+void Empresa::setCitas(Lista<Cita>* pCita) { this->cita = pCita; }
+void Empresa::setPacientes(Lista<Paciente>* pPaciente) { this->paciente = pPaciente; }
+void Empresa::setDoctores(Lista<Doctor>* pDoctor) { this->doctor = pDoctor; }
+void Empresa::setFacturas(Lista<Factura>* pFactura) { this->factura = pFactura; }
+
 
 void Empresa::getNombre(string pNombre) { this->nombre = pNombre; }
-void Empresa::guardar(ofstream&)
+Agenda * Empresa::getAgenda() { return this->agenda; }
+
+Lista<Cita>* Empresa::getCitas(){	return this->cita;}
+Lista<Paciente>* Empresa::getPacientes(){	return this->paciente;}
+Lista<Doctor>* Empresa::getDoctores(){	return this->doctor;}
+Lista<Factura>* Empresa::getFacturas(){	return this->factura;}
+
+void Empresa::guardar(ofstream& salida)
 {
+	salida << nombre << '\n';
+	
+	agenda->guardar(salida);
+	cita->guardar(salida);
+	paciente->guardar(salida);
+	doctor->guardar(salida);
+	factura->guardar(salida);
 }
 
-Empresa * Empresa::leer(ifstream&)
+Empresa * Empresa::leer(ifstream& entrada)
 {
-	return new Empresa("");
-}
-string Empresa::getId()
-{
-	return nombre;
-}
 
-Lista<Cita>* Empresa::getCitas()
-{
-	return cits;
-}
+	string pNombre;
 
-Agenda * Empresa::getAgenda()
-{
-	return ag;
-}
+	Agenda* pAgenda;
+	Lista<Cita>* pCita;
+	Lista<Paciente>* pPaciente;
+	Lista<Doctor>* pDoctor;
+	Lista<Factura>* pFactura;
 
-Lista<Paciente>* Empresa::getPacientes()
-{
-	return pa;
-}
+	getline(entrada, pNombre, '\n');
 
-Lista<Doctor>* Empresa::getDoctores()
-{
-	return doc;
-}
+	pAgenda = Agenda::leer(entrada);
+	pCita = Lista<Cita>::leer(entrada);
+	pPaciente = Lista<Paciente>::leer(entrada);
+	pDoctor = Lista<Doctor>::leer(entrada);
+	pFactura = Lista<Factura>::leer(entrada);
 
-Lista<Factura>* Empresa::getFacturas()
-{
-	return fac;
+	return new Empresa(pNombre, pAgenda, pCita, pPaciente, pDoctor, pFactura);
 }
