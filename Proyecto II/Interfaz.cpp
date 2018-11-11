@@ -31,7 +31,7 @@ int Interfaz::menu()
 	cout << "#----------------------------------------------#" << endl;
 	cout << "# 5 | Agenda                                   #" << endl;
 	cout << "#----------------------------------------------#" << endl;
-	cout << "# 6 | Volver                                   #" << endl;
+	cout << "# 6 | Salir                                    #" << endl;
 	cout << "#----------------------------------------------#" << endl;
 	cout << "# Digite la opcion que desee: ";  cin >> opcionMm;
 	cout << "#----------------------------------------------#" << endl;
@@ -69,56 +69,69 @@ int Interfaz::MMFactura()
 }
 bool Interfaz::MMFingresar(Empresa * e)
 {
-	if (e->getCitas()->cantidadElementos() == 0) { system("cls"); cout <<"----------------------------------"<<endl<< "No hay datos" <<endl<< "----------------------------------" << endl; system("pause"); return false; }
-	else {
-		string id,st,desc,imp;
-		float tot, stt,descc,impp;
-		bool op1 = true;
-		bool op2 = true;
+	cin.ignore();
+	cin.exceptions(ifstream::failbit | istream::badbit);
+	system("cls");
+	try
+	{
+		if (e->getCitas()->cantidadElementos() == 0) { throw 3; }
+		else {
+			string id, st, desc, imp;
+			float tot, stt, descc, impp;
+			bool op1 = true;
+			bool op2 = true;
 
-		while (op1) {
-			system("cls");
-			cout << "----------------------------------" << endl;
-			cout << "Digite el Id de la cita" << endl;
-			cin.ignore();
-			getline(cin, id);
-			if (soloNumeros(id)) {
-				if (e->getCitas()->existeID(id)) { //ver el metodo
-					bool find = false;
-					for (int i = 0; i < e->getFacturas()->cantidadElementos(); i++) {
-						if (e->getFacturas()->getElemento(i)->getEstado() != "NULO") {
-							if (e->getFacturas()->getElemento(i)->getAgenda()->getID() == id) {
-								find = true;
+			while (op1) {
+				system("cls");
+				cout << "----------------------------------" << endl;
+				cout << "Digite el Id de la cita" << endl;
+				cin.ignore();
+				getline(cin, id);
+				if (soloNumeros(id)) {
+					if (e->getCitas()->existeID(id)) { //ver el metodo
+						bool find = false;
+						for (int i = 0; i < e->getFacturas()->cantidadElementos(); i++) {
+							if (e->getFacturas()->getElemento(i)->getEstado() != "NULO") {
+								if (e->getFacturas()->getElemento(i)->getAgenda()->getID() == id) {
+									find = true;
+								}
 							}
 						}
+						if (!find) { op1 = false; }
+						else { cout << "----------------------------------" << "Cita ya usada" << endl << "----------------------------------"; system("pause"); return false; }
+
 					}
-					if(!find){ op1 = false; }
-					else { cout << "----------------------------------" << "Cita ya usada" << endl << "----------------------------------"; system("pause"); return false; }
-					
 				}
 			}
-		}
-		while (op2) {
-			system("cls");
-			cout << "----------------------------------" << endl;
-			cout << "Digite el subtotal: ";
-			cin.ignore();
-			getline(cin, st);
-			cout << "----------------------------------" << endl;
-			cout << endl << "Digite el descuento(0-100): ";
-			cin.ignore();
-			getline(cin, desc);
-			cout << "----------------------------------" << endl;
-			cout << endl << "Digite el impuesto(Max 20): ";
-			cin.ignore();
-			getline(cin, imp);
-			if (soloNumeros(st)&&soloNumeros(desc)&&soloNumeros(imp)) {
-				stt = convertirFloat(st);
-				descc = convertirFloat(desc);
-				impp = convertirFloat(imp);
-				
-				if (stt > 0 && descc >= 0 &&descc<101&& impp > 0&&impp<20) { //descuento maximo 100%, impuesto maximo 20%
-					op2 = false;
+			while (op2) {
+				system("cls");
+				cout << "----------------------------------" << endl;
+				cout << "Digite el subtotal: ";
+				cin.ignore();
+				getline(cin, st);
+				cout << "----------------------------------" << endl;
+				cout << endl << "Digite el descuento(0-100): ";
+				cin.ignore();
+				getline(cin, desc);
+				cout << "----------------------------------" << endl;
+				cout << endl << "Digite el impuesto(Max 20): ";
+				cin.ignore();
+				getline(cin, imp);
+				if (soloNumeros(st) && soloNumeros(desc) && soloNumeros(imp)) {
+					stt = convertirFloat(st);
+					descc = convertirFloat(desc);
+					impp = convertirFloat(imp);
+
+					if (stt > 0 && descc >= 0 && descc < 101 && impp > 0 && impp < 20) { //descuento maximo 100%, impuesto maximo 20%
+						op2 = false;
+					}
+					else {
+						cout << "##########----------------------------------" << endl;
+						cout << "              Valores erroneos" << endl;
+						cout << "##########----------------------------------" << endl;
+						system("pause");
+					}
+
 				}
 				else {
 					cout << "##########----------------------------------" << endl;
@@ -126,20 +139,20 @@ bool Interfaz::MMFingresar(Empresa * e)
 					cout << "##########----------------------------------" << endl;
 					system("pause");
 				}
-				
 			}
-			else {
-				cout << "##########----------------------------------" << endl;
-				cout << "              Valores erroneos" << endl;
-				cout << "##########----------------------------------" << endl;
-				system("pause");
-			}
+			float aux = (stt - ((stt / 100) * descc));
+			tot = (aux + ((aux / 100) * impp));
+			Factura* ff = new Factura(stt, descc, impp, tot, e->getCitas()->getID(id));
+			e->getFacturas()->agregarElemento(ff);
+			return true;
 		}
-		float aux = (stt-((stt / 100) * descc));
-		tot = (aux + ((aux / 100) * impp));
-		Factura* ff = new Factura(stt, descc, impp, tot, e->getCitas()->getID(id));
-		e->getFacturas()->agregarElemento(ff);
-		return true;
+	}
+	catch (int e)
+	{
+		Excepcion* error = new Excepcion(e);
+		cout << error->toString() << endl;
+		system("pause");
+		return false;
 	}
 }
 bool Interfaz::MMFanular(Empresa *e)
@@ -1523,5 +1536,27 @@ bool Interfaz::MMFAmostrarHoy(Empresa *e)
 	return true;
 }
 
-void Interfaz::salir(){}
-void Interfaz::defaul(){}
+//-------------------------------------------------------------------------------------------
+
+void Interfaz::salir()
+{
+	system("cls");
+
+	cout << "#----------------------------------------------#" << endl;
+	cout << "#                   Gracias!                   #" << endl;
+	cout << "#----------------------------------------------#" << endl;
+	system("pause");
+
+}
+
+void Interfaz::defaul()
+{
+	system("cls");
+
+	cout << "#----------------------------------------------#" << endl;
+	cout << "#                Opcion Invalida               #" << endl;
+	cout << "#----------------------------------------------#" << endl;
+
+	system("pause");
+	system("cls");
+}

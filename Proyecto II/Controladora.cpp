@@ -113,9 +113,10 @@ int Controladora::controlMPaciente()
 	switch (opccionMMP)
 	{
 	case 1: Interfaz::MMPingresar(empresa); break;
-	case 2: Interfaz::MMPeliminar(empresa); break;
-	case 3: Interfaz::MMPmostrarid(empresa); break;
-	case 4: Interfaz::MMPmostrarPersona(empresa); break;
+	case 2: Interfaz::MMPmodificar(empresa); break;
+	case 3: Interfaz::MMPeliminar(empresa); break;
+	case 4: Interfaz::MMPmostrarid(empresa); break;
+	/*case 4: Interfaz::MMPmostrarPersona(empresa); break;*/
 	case 5: Interfaz::MMPmostrartodos(empresa); break;
 	case 6: system("cls"); break;
 	}
@@ -149,9 +150,9 @@ int Controladora::controlMCita()
 	case 2: Interfaz::MMCImodificar(empresa); break;
 	case 3: Interfaz::MMCIeliminar(empresa); break;
 	case 4: Interfaz::MMCImostrarid(empresa); break;
-	case 5: Interfaz::MMFCImostrarPersona(empresa); break;
-	case 6: Interfaz::MMCImostrartodos(empresa); break;
-	case 7: system("cls"); break;
+	//case 5: Interfaz::MMFCImostrarPersona(empresa); break;
+	case 5: Interfaz::MMCImostrartodos(empresa); break;
+	case 6: system("cls"); break;
 	}
 
 	return opccionMMC;

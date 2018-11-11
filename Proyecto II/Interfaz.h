@@ -3,6 +3,8 @@
 
 #include "Paciente.h"
 #include "Empresa.h"
+#include "Excepcion.h"
+
 using namespace std;
 
 class Interfaz
