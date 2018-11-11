@@ -330,63 +330,64 @@ bool Interfaz::MMPingresar(Empresa * e)
 	cin.ignore();
 	cin.exceptions(ifstream::failbit | istream::badbit);
 	system("cls");
-	try
+
+	string nom, ape, tel, numm;
+	bool op = true;
+	bool op1 = true;
+	bool op2 = true;
+
+	system("cls");
+
+	while (op)
 	{
-		string nom, ape, tel, numm;
-		bool op = true;
-		bool op1 = true;
-		bool op2 = true;
+		cout << "#----------------------------------------------#" << endl;
+		cout << "# Digite el nombre: ";
 
-		system("cls");
-
-		while (op)
-		{
-			cout << "#----------------------------------------------#" << endl;
-			cout << "# Digite unicamente el nombre: ";
-			cin.ignore();
-			getline(cin, nom);
-			cout << "#----------------------------------------------#" << endl;
-			cout << "# Digite el apellido: ";
-			cin.ignore();
-			getline(cin, ape);
-			
-			if (soloLetras(nom)) { op = false; }
-			else { throw(9); }
-		}
-		while (op1) 
-		{
-			cout << "#----------------------------------------------#" << endl;
-			cout << "# Digite el telefono: ";
-			cin.ignore();
-			getline(cin, tel);
-
-			if (soloNumeros(tel)) { op1 = false; }
-			else { throw 10; }
-		}
-		while (op2) {
-			cout << "#----------------------------------------------#" << endl;
-			cout << "# Digite el ID de la persona: ";
-			cin.ignore();
-			getline(cin, numm);
-			if (soloNumeros(numm)) 
-			{
-				if (e->getPacientes()->existeID(numm)) { throw 6; }
-				op1 = true;
-			}
-			else { throw 10; }
-		}
-
-		Paciente* pa = new Paciente(numm, nom, ape, tel);
-		e->getPacientes()->agregarElemento(pa);
-		return true;
-	}
-	catch (int n)
+		getline(cin, nom);
+		if (soloLetras(nom)) { op = false; }
+		else { Excepcion* error = new Excepcion(9); cout << error->toString() << endl; system("pause"); system("cls"); }
+	}	op = true;
+	while (op)
 	{
-		Excepcion* error = new Excepcion(n);
-		cout << error->toString() << endl;
-		system("pause");
-		return false;
+		cout << "#----------------------------------------------#" << endl;
+		cout << "# Digite el apellido: ";
+		
+		getline(cin, ape);		
+		if (soloLetras(ape)) { op = false; }
+		else { Excepcion* error = new Excepcion(9); cout << error->toString() << endl; system("pause"); system("cls"); }
 	}
+	while (op1)
+	{
+		cout << "#----------------------------------------------#" << endl;
+		cout << "# Digite el telefono: ";
+		
+		getline(cin, tel);
+		if (soloNumeros(tel)) { op1 = false; }
+		else { Excepcion* error = new Excepcion(10); cout << error->toString() << endl; system("pause"); system("cls"); }
+	}
+	while (op2) 
+	{
+		cout << "#----------------------------------------------#" << endl;
+		cout << "# Digite el ID del paciente: ";
+
+		getline(cin, numm);
+		if (soloNumeros(numm))
+		{
+			if (e->getPacientes()->existeID(numm)) { Excepcion* error = new Excepcion(6); cout << error->toString() << endl;	system("pause"); system("cls"); }
+			else { op2 = false; }
+		}
+		else { Excepcion* error = new Excepcion(10); cout << error->toString() << endl; system("pause"); system("cls"); }
+	}
+
+	Paciente* pa = new Paciente(numm, nom, ape, tel);
+	e->getPacientes()->agregarElemento(pa);
+
+	cout << "#----------------------------------------------#" << endl;
+	cout << "#              Paciente Ingresado              #" << endl;
+	cout << "#----------------------------------------------#" << endl;
+	system("pause");
+
+	return true;	
 }
 bool Interfaz::MMPmodificar(Empresa * e)
 {
@@ -408,85 +409,88 @@ bool Interfaz::MMPmodificar(Empresa * e)
 	bool op = true;
 	bool op1 = true;
 	string id, swt,aux,cambios;
-	while (op) {
+	
+	while (op)
+	{
 		system("cls");
-		cout << "--------------------------------------" << endl;
-		cout << "Digite el Id del Paciente " << endl;
-		cin.ignore();
+		cout << "#----------------------------------------------#" << endl;
+		cout << "# Digite el Id del Paciente: ";
 		getline(cin, id);
-		if (soloNumeros(id)) {
-			if (e->getPacientes()->existeID(id)) { //ver el metodo
-				op = false;
-			}
-			else {
-				cout << "-----------------------------------------------" << endl;
-				cout << "|                   No existe                 |" << endl;
-				cout << "-----------------------------------------------" << endl;
-				system("pause");
-				return false;
-			}
+
+		if (soloNumeros(id))
+		{
+			if (e->getPacientes()->existeID(id)) { op = false; }
+			else { Excepcion* error = new Excepcion(5); cout << error->toString() << endl; system("pause"); system("cls"); }
 		}
-		else {
-			system("cls");
-			cout << "-----------------------------------------------" << endl;
-			cout << "                  No es numero" << endl;
-			cout << "-----------------------------------------------" << endl;
-			system("pause");
-		}
+		else { Excepcion* error = new Excepcion(10); cout << error->toString() << endl; system("pause"); system("cls"); }
 	}
 
-	while (op1) {
+	while (op1)
+	{
 		system("cls");
-		cout << "-----------------------------------------------" << endl;
-		cout << "Que desea cambiar?" << endl;
-		cout << "1 Nombre"<<endl;
-		cout << "2 Apellido" << endl;
-		cout << "3 Telefono" << endl;
-		cout << "4 ID" << endl;
-		cout << "5 SALIR AL MENU" << endl;
+		cout << "#----------------------------------------------#" << endl;
+		cout << "#                Que desea cambiar?            #" << endl;
+		cout << "#----------------------------------------------#" << endl;
+		cout << "# 1 | Nombre"<<endl;
+		cout << "#----------------------------------------------#" << endl;
+		cout << "# 2 | Apellido" << endl;
+		cout << "#----------------------------------------------#" << endl;
+		cout << "# 3 | Telefono" << endl;
+		cout << "#----------------------------------------------#" << endl;
+		cout << "# 4 | ID" << endl;
+		cout << "#----------------------------------------------#" << endl;
+		cout << "# 5 | SALIR AL MENU" << endl;
+		cout << "#----------------------------------------------#" << endl;
 		cout << "Digite el numero: ";
-		cin.ignore();
 		getline(cin, swt);
 		
-		if (soloNumeros(swt)) {
+		if (soloNumeros(swt))
+		{
 			int swtt = convertirInt(swt);
-			if (swtt > 0 && swtt < 6) {
+			if (swtt > 0 && swtt < 6) 
+			{
 				switch (swtt)
 				{
 				case 1:
 					system("cls");
-					cout << "-----------------------------------------------" << endl;
-					cout << "Nombre nuevo: ";
-					cin.ignore();
+					cout << "#----------------------------------------------#" << endl;
+					cout << "# Nombre nuevo: ";
 					getline(cin, aux);
-					if (soloLetras(aux)) {
-						e->getPacientes()->getID(id)->setNombre(aux);
+
+					if (soloLetras(aux)) { e->getPacientes()->getID(id)->setNombre(aux); }
+					else { Excepcion* error = new Excepcion(9); cout << error->toString() << endl; system("pause"); system("cls"); break;
 					}
-					
 					break;
 				case 2:
 					system("cls");
-					cout << "-----------------------------------------------" << endl;
-					cout << "Apellido nuevo: ";
-					cin.ignore();
+					cout << "#----------------------------------------------#" << endl;
+					cout << "# Apellido nuevo: ";
 					getline(cin, aux);
-					e->getPacientes()->getID(id)->setApellido(aux);
+
+					if (soloLetras(aux)) { e->getPacientes()->getID(id)->setApellido(aux); }
+					else { Excepcion* error = new Excepcion(9); cout << error->toString() << endl; system("pause"); system("cls"); break;
+					}
 					break;
 				case 3:
 					system("cls");
-					cout << "-----------------------------------------------" << endl;
-					cout << "Telefono nuevo: ";
-					cin.ignore();
+					cout << "#----------------------------------------------#" << endl;
+					cout << "# Telefono nuevo: ";
 					getline(cin, aux);
-					e->getPacientes()->getID(id)->setTelefono(aux);
+					
+					if (soloNumeros(aux)) { e->getPacientes()->getID(id)->setTelefono(aux); }
+					else { Excepcion* error = new Excepcion(10); cout << error->toString() << endl; system("pause"); system("cls"); break;
+					}
 					break;
 				case 4:
 					system("cls");
-					cout << "-----------------------------------------------" << endl;
-					cout << "ID nuevo: ";
-					cin.ignore();
+					cout << "#----------------------------------------------#" << endl;
+					cout << "# ID nuevo: ";
 					getline(cin, aux);
-					e->getPacientes()->getID(id)->setID(aux);
+					
+					if (e->getPacientes()->existeID(aux)) { Excepcion* error = new Excepcion(6); cout << error->toString() << endl;	system("pause"); system("cls");  break; }
+					if (soloNumeros(aux)) { e->getPacientes()->getID(id)->setID(aux); }
+					else { Excepcion* error = new Excepcion(10); cout << error->toString() << endl; system("pause"); system("cls"); break;
+					}
 					break;
 				case 5:
 					system("cls");
@@ -570,20 +574,17 @@ bool Interfaz::MMPeliminar(Empresa * e)
 		}
 	}
 	for (int i = 0; i < e->getCitas()->cantidadElementos(); i++) {
-		if (e->getCitas()->getID(convertirString(i))->getPaciente()->getID()== e->getPacientes()->getID(id)->getID()) {
-			op2 = false;
-		}
+		if (e->getCitas()->getID(convertirString(i))->getPaciente()->getID() == e->getPacientes()->getID(id)->getID()) { op2 = false; }
 	}
 	
-	if (op2) {
-		e->getPacientes()->eliminarElemento(convertirInt(id));
-	}
-	else {
+	if (op2) { e->getPacientes()->eliminarElemento(convertirInt(id)); }
+	else 
+	{
 		system("cls");
-		cout << "-----------------------------------------------" << endl;
-		cout << "             No es posible eliminarlo ya " << endl;
-		cout << "             que tiene asignado una cita." << endl;
-		cout << "-----------------------------------------------" << endl;
+		cout << "#----------------------------------------------#" << endl;
+		cout << "#            No es posible eliminarlo ya       #" << endl;
+		cout << "#            que tiene asignado una cita.      #" << endl;
+		cout << "#----------------------------------------------#" << endl;
 		system("pause");
 	}
 	
@@ -607,34 +608,27 @@ bool Interfaz::MMPmostrarid(Empresa * e)
 		system("pause");
 		return false;
 	}
+
 	bool op1 = true;
 	string id;
 	while (op1) {
 		system("cls");
-		cout << "--------------------------------------" << endl;
-		cout << "Digite el Id del Paciente " << endl;
-		cin.ignore();
+		cout << "#----------------------------------------------#" << endl;
+		cout << "# Digite el Id del Paciente ";
 		getline(cin, id);
-		if (soloNumeros(id)) {
-			if (e->getPacientes()->existeID(id)) { //ver el metodo
+
+		if (soloNumeros(id)) 
+		{
+			if (e->getPacientes()->existeID(id)) 
+			{
 				system("cls");
 				cout << e->getPacientes()->getID(id)->toString();
 				system("pause");
 				return true;
 			}
-			else {
-				cout << "-----------------------------------------------" << endl;
-				cout << "|                   No existe                 |" << endl;
-				cout << "-----------------------------------------------" << endl;
-				system("pause");
-				return false;
-			}
+			else { Excepcion* error = new Excepcion(5); cout << error->toString() << endl; system("pause"); system("cls"); return false; }
 		}
-		else {
-			cout << "-----------------------------------------------" << endl;
-			cout << "                  No es numero" << endl;
-			cout << "-----------------------------------------------" << endl;
-		}
+		else { Excepcion* error = new Excepcion(9); cout << error->toString() << endl; system("pause"); system("cls"); }
 	}
 	return false;
 }

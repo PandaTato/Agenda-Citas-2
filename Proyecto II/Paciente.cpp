@@ -12,7 +12,7 @@ string Paciente::toString()
 
 	r
 		<< "#----------------------------------------------#" << endl
-		<< "#                   Paciente                    #" << endl
+		<< "#                   Paciente                   #" << endl
 		<< "#----------------------------------------------#" << endl
 		<< "#      Cedula      | " << id << endl
 		<< "#----------------------------------------------#" << endl
@@ -31,7 +31,7 @@ void Paciente::guardar(ofstream & salida)
 	salida << id << '\t';
 	salida << nombre << '\t';
 	salida << apellido << '\t';
-	salida << telefono << '\t';
+	salida << telefono << '\n';
 }
 
 
@@ -43,7 +43,7 @@ Paciente * Paciente::leer(ifstream & entrada)
 	getline(entrada, id, '\t');
 	getline(entrada, nom, '\t');
 	getline(entrada, ape, '\t');
-	getline(entrada, tel, '\t');
+	getline(entrada, tel, '\n');
 
 
 	return new Paciente(id, nom, ape, tel);

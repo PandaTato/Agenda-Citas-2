@@ -44,14 +44,7 @@ bool soloLetras(string s)
 	for (int i = 0; i < strlen(sl); i++)
 	{
 		if (sl[i] == ' ') i++;
-		if (!isalpha(sl[i]))
-		{
-			cout << "#----------------------------------------------#" << endl;
-			cout << "# ERROR : Solo se permiten letras              #" << endl;
-			cout << "#----------------------------------------------#" << endl;
-			system("pause");
-			return false;
-		}
+		if (!isalpha(sl[i])) { return false; }
 	}
 	return true;
 }
@@ -62,14 +55,7 @@ bool soloNumeros(string s)
 
 	for (int i = 0; i < strlen(sn); i++)
 	{
-		if (!isdigit(sn[i]))
-		{
-			cout << "#----------------------------------------------#" << endl;
-			cout << "# ERROR : Solo se permiten numeros             #" << endl;
-			cout << "#----------------------------------------------#" << endl;
-			system("pause");
-			return false;
-		}
+		if (!isdigit(sn[i])) { return false; }
 	}
 	return true;
 }
