@@ -15,7 +15,7 @@ Factura::Factura()
 }
 Factura::Factura(float pSubTotal, float pDescuento, float pImpuestoVenta, float pTotal, Cita * pAgenda)
 {
-	this->id = ID++;
+	this->id = static_cast<std::ostringstream*>(&(std::ostringstream() << ID++))->str();
 	this->estado = "Pagado";
 	this->agenda = pAgenda;
 
