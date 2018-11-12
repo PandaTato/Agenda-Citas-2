@@ -1,6 +1,5 @@
 #include "Agenda.h"
 
-Agenda::Agenda() { citas = NULL; }
 Agenda::Agenda(Lista<Cita>* pCitas) { this->citas = pCitas; }
 Agenda::Agenda(Agenda* pAgenda) { this->citas = pAgenda->getCitas(); }
 
@@ -36,10 +35,12 @@ string Agenda::obtenerAgenda(Doctor * doc, Fecha *fech)
 		for (int i = 0; i < 7; i++) 
 		{
 			Nodo<Cita>* actual = citas->primerElemento();
+			
 			s
 				<< "--------------------------------------" << endl
 				<< Dsem[i] << endl
 				<< "--------------------------------------" << endl;
+			s << citas->cantidadElementos();
 			while (actual != NULL)
 			{
 				if (actual->getElemento()->getDoctor()->getID() == doc->getID()) 
@@ -49,7 +50,7 @@ string Agenda::obtenerAgenda(Doctor * doc, Fecha *fech)
 					int dd = actual->getElemento()->getFecha()->getDia();
 					if (yy == yaux && mm == maux && dd == daux)
 					{
-						s << actual->getElemento();
+						s << actual->getElemento()->toString();
 					}
 					else
 					{
@@ -90,7 +91,7 @@ string Agenda::obtenerAgenda(Doctor * doc, Fecha *fech)
 							int dd = actual->getElemento()->getFecha()->getDia();
 							if (yy == yaux2 && mm == maux2 && dd == daux2) 
 							{
-								s << actual->getElemento();
+								s << actual->getElemento()->toString();
 							}
 							else 
 							{
@@ -120,7 +121,7 @@ string Agenda::obtenerAgenda(Doctor * doc, Fecha *fech)
 							int dd = actual->getElemento()->getFecha()->getDia();
 							if (yy == yaux && mm == maux && dd == i)
 							{
-								s << actual->getElemento();
+								s << actual->getElemento()->toString();
 							}
 							else
 							{
@@ -169,7 +170,7 @@ string Agenda::obtenerAgenda(Doctor * doc, Fecha *fech)
 							int dd = actual->getElemento()->getFecha()->getDia();
 							if (yy == yaux && mm == maux2 && dd == daux2)
 							{
-								s << actual->getElemento();
+								s << actual->getElemento()->toString();
 							}
 							else
 							{
@@ -198,7 +199,7 @@ string Agenda::obtenerAgenda(Doctor * doc, Fecha *fech)
 							int dd = actual->getElemento()->getFecha()->getDia();
 							if (yy == yaux && mm == maux && dd == i) 
 							{
-								s << actual->getElemento();
+								s << actual->getElemento()->toString();
 							}
 							else 
 							{
@@ -230,7 +231,7 @@ string Agenda::obtenerAgenda(Doctor * doc, Fecha *fech)
 						int dd = actual->getElemento()->getFecha()->getDia();
 						if (yy == yaux && mm == maux && dd == daux) 
 						{
-							s << actual->getElemento();
+							s << actual->getElemento()->toString();
 						}
 						else 
 						{
@@ -250,10 +251,3 @@ string Agenda::obtenerAgenda(Doctor * doc, Fecha *fech)
 	return s.str();
 }
 
-void Agenda::guardar(ofstream & salida) { citas->guardar(salida); }
-Agenda* Agenda::leer(ifstream & entrada)
-{
-	Lista<Cita>* ptrLista = Lista<Cita>::leer(entrada);
-
-	return new Agenda(ptrLista);
-}

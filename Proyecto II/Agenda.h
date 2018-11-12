@@ -9,7 +9,6 @@ class Agenda
 private:
 	Lista<Cita>* citas;
 public:
-	Agenda();
 	Agenda(Lista<Cita>*);
 	Agenda(Agenda*);
 	
@@ -22,9 +21,7 @@ public:
 	string toString();
 
 	string obtenerAgenda(Doctor*,Fecha*);
-
-	void guardar(ofstream&);
-	static Agenda* leer(ifstream&);
+	
 };
 
 #endif // !AGENDA_H

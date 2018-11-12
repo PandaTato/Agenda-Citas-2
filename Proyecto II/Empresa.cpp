@@ -10,12 +10,12 @@ Empresa::Empresa(string a)
 	factura = new Lista<Factura>();
 }
 
-Empresa::Empresa(string pNombre, Agenda * pAgenda, Lista<Cita>* pCita, Lista<Paciente>* pPaciente, Lista<Doctor>* pDoctor, Lista<Factura>* pFactura)
+Empresa::Empresa(string pNombre, Lista<Cita>* pCita, Lista<Paciente>* pPaciente, Lista<Doctor>* pDoctor, Lista<Factura>* pFactura)
 {
 	nombre = pNombre;
 
 	cita = pCita;
-	agenda = pAgenda;
+	agenda = new Agenda(pCita);
 	paciente = pPaciente;
 	doctor = pDoctor;
 	factura = pFactura;
@@ -44,7 +44,6 @@ void Empresa::guardar(ofstream& salida)
 {
 	salida << nombre << '\n';
 	
-	agenda->guardar(salida);
 	cita->guardar(salida);
 	paciente->guardar(salida);
 	doctor->guardar(salida);
@@ -56,7 +55,6 @@ Empresa * Empresa::leer(ifstream& entrada)
 
 	string pNombre;
 
-	Agenda* pAgenda;
 	Lista<Cita>* pCita;
 	Lista<Paciente>* pPaciente;
 	Lista<Doctor>* pDoctor;
@@ -64,11 +62,11 @@ Empresa * Empresa::leer(ifstream& entrada)
 
 	getline(entrada, pNombre, '\n');
 
-	pAgenda = Agenda::leer(entrada);
 	pCita = Lista<Cita>::leer(entrada);
+
 	pPaciente = Lista<Paciente>::leer(entrada);
 	pDoctor = Lista<Doctor>::leer(entrada);
 	pFactura = Lista<Factura>::leer(entrada);
 
-	return new Empresa(pNombre, pAgenda, pCita, pPaciente, pDoctor, pFactura);
+	return new Empresa(pNombre, pCita, pPaciente, pDoctor, pFactura);
 }

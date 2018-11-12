@@ -9,7 +9,7 @@ class Empresa
 {
 public:
 	Empresa(string);
-	Empresa(string, Agenda*, Lista<Cita>*, Lista<Paciente>*, Lista<Doctor>*, Lista<Factura>*);
+	Empresa(string, Lista<Cita>*, Lista<Paciente>*, Lista<Doctor>*, Lista<Factura>*);
 	~Empresa();
 
     void setNombre(	string );

@@ -5,7 +5,7 @@ Fecha::Fecha()
 	annio = nowLocal.tm_year + 1900;
 	mes = nowLocal.tm_mon + 1;
 	dia = nowLocal.tm_mday;
-	day = nowLocal.tm_wday + 1;
+	day = nowLocal.tm_wday ;
 }
 Fecha::Fecha(int pAnnio, int pMes, int pDia)
 {
