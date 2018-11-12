@@ -28,29 +28,30 @@ string Agenda::obtenerAgenda(Doctor * doc, Fecha *fech)
 	string Dsem[] = { "Domingo","Lunes","Martes","Miercoles","Jueves", "Viernes", "Sabado" };
 	yaux = fech->getAnnio();
 	maux = fech->getMes();
-	daux = fech->getDia() - fech->getwday() + 1; //con esto me seteo en el domingo de esa semana
+	daux = fech->getDia() - fech->getwday(); //con esto me seteo en el domingo de esa semana
 
 	if (fech->getDia() >= 7) 
 	{
 		for (int i = 0; i < 7; i++) 
 		{
 			Nodo<Cita>* actual = citas->primerElemento();
-			
+
 			s
-				<< "--------------------------------------" << endl
+				<< "----------------------------------------------------------------------------" << endl
 				<< Dsem[i] << endl
-				<< "--------------------------------------" << endl;
-			s << citas->cantidadElementos();
+				<< "----------------------------------------------------------------------------" << endl; 
 			while (actual != NULL)
 			{
 				if (actual->getElemento()->getDoctor()->getID() == doc->getID()) 
 				{
+					//s << "holi" << endl;
 					int yy = actual->getElemento()->getFecha()->getAnnio();
 					int mm = actual->getElemento()->getFecha()->getMes();
 					int dd = actual->getElemento()->getFecha()->getDia();
 					if (yy == yaux && mm == maux && dd == daux)
-					{
+					{ 
 						s << actual->getElemento()->toString();
+						actual = actual->getSiguiente();
 					}
 					else
 					{
@@ -79,9 +80,9 @@ string Agenda::obtenerAgenda(Doctor * doc, Fecha *fech)
 				for (int i = 0; i < j; i++) {
 					Nodo<Cita>* actual = citas->primerElemento();
 					s
-						<< "--------------------------------------" << endl
+						<< "----------------------------------------------------------------------------" << endl
 						<< Dsem[i] << endl
-						<< "--------------------------------------" << endl;
+						<< "----------------------------------------------------------------------------" << endl;
 					while (actual != NULL)
 					{
 						if (actual->getElemento()->getDoctor()->getID() == doc->getID())
@@ -109,9 +110,9 @@ string Agenda::obtenerAgenda(Doctor * doc, Fecha *fech)
 				{
 					Nodo<Cita>* actual = citas->primerElemento();
 					s
-						<< "--------------------------------------" << endl
+						<< "----------------------------------------------------------------------------" << endl
 						<< Dsem[i + j - 1] << endl
-						<< "--------------------------------------" << endl;
+						<< "----------------------------------------------------------------------------" << endl;
 					while (actual != NULL) 
 					{
 						if (actual->getElemento()->getDoctor()->getID() == doc->getID()) 
@@ -159,9 +160,9 @@ string Agenda::obtenerAgenda(Doctor * doc, Fecha *fech)
 				{
 					Nodo<Cita>* actual = citas->primerElemento();
 					s
-						<< "--------------------------------------" << endl
+						<< "----------------------------------------------------------------------------" << endl
 						<< Dsem[i] << endl
-						<< "--------------------------------------" << endl;
+						<< "----------------------------------------------------------------------------" << endl;
 					while (actual != NULL) {
 						if (actual->getElemento()->getDoctor()->getID() == doc->getID())
 						{
@@ -187,9 +188,9 @@ string Agenda::obtenerAgenda(Doctor * doc, Fecha *fech)
 				for (int i = 1; i <= fech->getDia(); i++)
 				{
 					s
-						<< "--------------------------------------" << endl
+						<< "----------------------------------------------------------------------------" << endl
 						<< Dsem[i + j - 1] << endl
-						<< "--------------------------------------" << endl;
+						<< "----------------------------------------------------------------------------" << endl;
 					Nodo<Cita>* actual = citas->primerElemento();
 					while (actual != NULL) {
 						if (actual->getElemento()->getDoctor()->getID() == doc->getID())
@@ -219,9 +220,9 @@ string Agenda::obtenerAgenda(Doctor * doc, Fecha *fech)
 			{
 				Nodo<Cita>* actual = citas->primerElemento();
 				s
-					<< "--------------------------------------" << endl
+					<< "----------------------------------------------------------------------------" << endl
 					<< Dsem[i] << endl
-					<< "--------------------------------------" << endl;
+					<< "----------------------------------------------------------------------------" << endl;
 				while (actual != NULL)
 				{
 					if (actual->getElemento()->getDoctor()->getID() == doc->getID())
