@@ -4,7 +4,7 @@ int codigo = 0;
 
 Cita::Cita()
 {
-	this->id = codigo++;
+	this->id = static_cast<std::ostringstream*>(&(std::ostringstream() << codigo++))->str();
 
 	this->doctor = NULL;
 	this->paciente = NULL;
