@@ -1,12 +1,13 @@
 
 1
 0
-26	dd	asd	263
-23	sdsd	sss	22
-2018	11	11	0
-8	50
+123456789	Eduardo	Vargas	22601006
+117010975	Rodrigo	Castro	88803381
+2018	11	15	4
+7	45
+2
+117010975	Rodrigo	Castro	88803381
+117010976	Alonso	Rojas	25890221
 1
-23	sdsd	sss	22
-1
-26	dd	asd	263
+123456789	Eduardo	Vargas	22601006
 0
