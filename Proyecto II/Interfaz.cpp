@@ -622,8 +622,7 @@ bool Interfaz::MMPmostrarid(Empresa * e)
 			{
 				if (e->getCitas()->cantidadElementos() == 0) 
 				{
-					/*EXCEPION*/
-					system("pause"); system("cls");
+					Excepcion* error = new Excepcion(4); cout << error->toString() << endl; system("pause"); system("cls");
 					citss = false;
 				}
 				else 
@@ -639,8 +638,7 @@ bool Interfaz::MMPmostrarid(Empresa * e)
 				}
 			}
 			else {
-				/*EXCEPION*/
-				system("pause"); system("cls");
+				Excepcion* error = new Excepcion(11); cout << error->toString() << endl; system("pause"); system("cls");
 			}
 		}
 
@@ -665,8 +663,7 @@ bool Interfaz::MMPmostrarid(Empresa * e)
 			{
 				if (e->getFacturas()->cantidadElementos() == 0)
 				{
-					/*EXCEPION*/
-					system("pause"); system("cls");
+					Excepcion* error = new Excepcion(4); cout << error->toString() << endl; system("pause"); system("cls");
 					factss = false;
 				}
 				else {
@@ -678,8 +675,7 @@ bool Interfaz::MMPmostrarid(Empresa * e)
 				}
 			}
 			else {
-				/*EXCEPION*/
-				system("pause"); system("cls");
+				Excepcion* error = new Excepcion(11); cout << error->toString() << endl; system("pause"); system("cls");
 			}
 		}
 	}
@@ -1059,8 +1055,7 @@ bool Interfaz::MMDmostrarid(Empresa * e)
 		else {
 			if (ver == "S" || ver == "s") {
 				if (e->getCitas()->cantidadElementos() == 0) {
-					/*EXCEPION*/
-					system("pause"); system("cls");
+					Excepcion* error = new Excepcion(3); cout << error->toString() << endl; system("pause"); system("cls");
 					pass = false;
 				}
 				else {
@@ -1072,8 +1067,7 @@ bool Interfaz::MMDmostrarid(Empresa * e)
 				}
 			}
 			else {
-				/*EXCEPION*/
-				system("pause"); system("cls");
+				Excepcion* error = new Excepcion(11); cout << error->toString() << endl; system("pause"); system("cls");
 			}
 		}
 
@@ -1093,14 +1087,15 @@ bool Interfaz::MMDmostrarid(Empresa * e)
 			system("cls");
 		}
 		else {
-			if (ver == "S" || ver == "s") {
+			if (ver == "S" || ver == "s") 
+			{
 				if (e->getFacturas()->cantidadElementos() == 0) {
-					/*EXCEPION*/
-					system("pause"); system("cls");
+					 Excepcion* error = new Excepcion(4); cout << error->toString() << endl; system("pause"); system("cls");
 					factss = false;
 				}
 				else {
-					for (int i = 0; i < e->getFacturas()->cantidadElementos(); i++) {
+					for (int i = 0; i < e->getFacturas()->cantidadElementos(); i++)
+					{
 						if (e->getFacturas()->getID(convertirString(i))->getAgenda()->getDoctor()->getID() == e->getDoctores()->getID(id)->getID()) {
 							cout << e->getFacturas()->getID(convertirString(i))->toString();
 						}
@@ -1108,7 +1103,7 @@ bool Interfaz::MMDmostrarid(Empresa * e)
 				}
 			}
 			else {
-				/*EXCEPION*/
+				Excepcion* error = new Excepcion(5); cout << error->toString() << endl; system("pause"); system("cls");
 				system("pause"); system("cls");
 			}
 		}
@@ -1249,14 +1244,13 @@ bool Interfaz::MMCIingresar(Empresa *e)
 	cout << "#----------------------------------------------#" << endl;
 	cout << "#                  Mostrando agenda            #" << endl;
 	cout << "#----------------------------------------------#" << endl;
-	system("pause");
-	system("cls");
 	cout << e->getAgenda()->obtenerAgenda(e->getDoctores()->getID(id2), fecha);
 	system("pause");
 	//
 	while (agen) {
 		system("cls");
-		cout << "Desea continuar con el ingreso de la cita?  S/N";
+		cout << "#----------------------------------------------#" << endl;
+		cout << "Desea continuar con el ingreso de la cita? S/N: ";
 		getline(cin, ingreso);
 		if (ingreso == "N" || ingreso == "n") {
 			return false;

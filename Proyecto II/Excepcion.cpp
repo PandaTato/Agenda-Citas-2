@@ -119,6 +119,15 @@ string Excepcion::Error(int ID)
 		return r.str();
 		break;
 	}
+	case 11: //opcion
+	{
+		stringstream r;
+		r
+			<< "#----------------------------------------------#" << endl
+			<< "#                  Opcion Invalidad            #" << endl;
+		return r.str();
+		break;
+	}
 	default: //desconocido
 	{
 		stringstream r;
