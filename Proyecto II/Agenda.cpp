@@ -93,6 +93,7 @@ string Agenda::obtenerAgenda(Doctor * doc, Fecha *fech)
 							if (yy == yaux2 && mm == maux2 && dd == daux2) 
 							{
 								s << actual->getElemento()->toString();
+								actual = actual->getSiguiente();
 							}
 							else 
 							{
@@ -123,6 +124,7 @@ string Agenda::obtenerAgenda(Doctor * doc, Fecha *fech)
 							if (yy == yaux && mm == maux && dd == i)
 							{
 								s << actual->getElemento()->toString();
+								actual = actual->getSiguiente();
 							}
 							else
 							{
@@ -172,6 +174,7 @@ string Agenda::obtenerAgenda(Doctor * doc, Fecha *fech)
 							if (yy == yaux && mm == maux2 && dd == daux2)
 							{
 								s << actual->getElemento()->toString();
+								actual = actual->getSiguiente();
 							}
 							else
 							{
@@ -201,6 +204,7 @@ string Agenda::obtenerAgenda(Doctor * doc, Fecha *fech)
 							if (yy == yaux && mm == maux && dd == i) 
 							{
 								s << actual->getElemento()->toString();
+								actual = actual->getSiguiente();
 							}
 							else 
 							{
@@ -233,6 +237,7 @@ string Agenda::obtenerAgenda(Doctor * doc, Fecha *fech)
 						if (yy == yaux && mm == maux && dd == daux) 
 						{
 							s << actual->getElemento()->toString();
+							actual = actual->getSiguiente();
 						}
 						else 
 						{
