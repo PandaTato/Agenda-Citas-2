@@ -582,7 +582,8 @@ bool Interfaz::MMPmostrarid(Empresa * e)
 	bool citss = true;
 	bool factss = true;
 	string id;
-	while (op1) {
+	while (op1)
+	{
 		system("cls");
 		cout << "#----------------------------------------------#" << endl;
 		cout << "# Digite el Id del Paciente ";
@@ -594,8 +595,7 @@ bool Interfaz::MMPmostrarid(Empresa * e)
 			{
 				system("cls");
 				cout << e->getPacientes()->getID(id)->toString();
-				system("pause");
-				return true;
+				op1 = false;
 			}
 			else { Excepcion* error = new Excepcion(5); cout << error->toString() << endl; system("pause"); system("cls"); return false; }
 		}
@@ -604,8 +604,6 @@ bool Interfaz::MMPmostrarid(Empresa * e)
 	while (citss)
 	{
 		string ver;
-		system("cls");
-		cout << "#----------------------------------------------#" << endl;
 		cout << "# Quiere ver todas las citas? S/N";
 		getline(cin, ver);
 		cout << endl;
@@ -633,6 +631,8 @@ bool Interfaz::MMPmostrarid(Empresa * e)
 						if (e->getCitas()->getID(convertirString(i))->getPaciente()->getID() == e->getPacientes()->getID(id)->getID())
 						{ 
 							cout << e->getCitas()->getID(convertirString(i))->toString();
+							system("pause");
+							citss = false;
 						} 
 					}
 				}
@@ -646,8 +646,7 @@ bool Interfaz::MMPmostrarid(Empresa * e)
 	while (factss)
 	{
 		string ver;
-		system("cls");
-		cout << "#----------------------------------------------#" << endl;
+
 		cout << "# Quiere ver todas las facturas? S/N";
 		getline(cin, ver);
 		cout << endl;
@@ -668,8 +667,11 @@ bool Interfaz::MMPmostrarid(Empresa * e)
 				}
 				else {
 					for (int i = 0; i < e->getFacturas()->cantidadElementos(); i++) {
-						if (e->getFacturas()->getID(convertirString(i))->getAgenda()->getPaciente()->getID() == e->getPacientes()->getID(id)->getID()) {
+						if (e->getFacturas()->getID(convertirString(i))->getAgenda()->getPaciente()->getID() == e->getPacientes()->getID(id)->getID()) 
+						{
 							cout << e->getFacturas()->getID(convertirString(i))->toString();
+							system("pause");
+							factss = false;
 						}
 					}
 				}
@@ -1031,8 +1033,7 @@ bool Interfaz::MMDmostrarid(Empresa * e)
 			{ //ver el metodo
 				system("cls");
 				cout << e->getDoctores()->getID(id)->toString();
-				system("pause");
-				return true;
+				op1 = false;
 			}
 			else { Excepcion* error = new Excepcion(5); cout << error->toString() << endl; system("pause"); system("cls"); return false; }
 		}
@@ -1041,8 +1042,6 @@ bool Interfaz::MMDmostrarid(Empresa * e)
 	while (pass)
 	{
 		string ver;
-		system("cls");
-		cout << "#----------------------------------------------#" << endl;
 		cout << "# Quiere ver todos los pacientes? S/N";
 		getline(cin, ver);
 		cout << endl;
@@ -1060,8 +1059,10 @@ bool Interfaz::MMDmostrarid(Empresa * e)
 				}
 				else {
 					for (int i = 0; i < e->getCitas()->cantidadElementos(); i++) {
-						if (e->getCitas()->getID(convertirString(i))->getDoctor()->getID() == e->getDoctores()->getID(id)->getID()) {
+						if (e->getCitas()->getID(convertirString(i))->getDoctor()->getID() == e->getDoctores()->getID(id)->getID())
+						{
 							cout << e->getCitas()->getID(convertirString(i))->getPaciente()->toString();
+							pass = false;
 						}
 					}
 				}
@@ -1096,8 +1097,11 @@ bool Interfaz::MMDmostrarid(Empresa * e)
 				else {
 					for (int i = 0; i < e->getFacturas()->cantidadElementos(); i++)
 					{
-						if (e->getFacturas()->getID(convertirString(i))->getAgenda()->getDoctor()->getID() == e->getDoctores()->getID(id)->getID()) {
+						if (e->getFacturas()->getID(convertirString(i))->getAgenda()->getDoctor()->getID() == e->getDoctores()->getID(id)->getID())
+						{
 							cout << e->getFacturas()->getID(convertirString(i))->toString();
+							system("pause");
+							factss = false;
 						}
 					}
 				}
